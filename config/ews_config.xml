@@ -479,10 +479,11 @@
           url="http://rain.nemac.org/~derek/fswms/html/ews?TRANSPARENT=true"
           srs="EPSG:3785"
           layers="EFETAC-NASA_1YrBaseline_current"
-          name="current_apr7_apr30.tif"
+          name="current_apr15_may8.tif"
           styles="default" 
           identify="true"
-          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"/>	
+          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"
+          mask="MaskForDeciduousForest,MaskForConiferForest,MaskForMixedForest,MaskForRangeAgricultureShrub"/>	
 
         <wmsLayer
           lid="AE"
@@ -490,10 +491,11 @@
           url="http://rain.nemac.org/~derek/fswms/html/ews?TRANSPARENT=true"
           srs="EPSG:3785"
           layers="EFETAC-NASA_1YrBaseline_previous1"
-          name="previous1_mar30_apr22.tif"
+          name="previous1_apr7_apr30.tif"
           styles="default" 
           identify="true"
-          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"/>	
+          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"
+          mask="MaskForDeciduousForest,MaskForConiferForest,MaskForMixedForest,MaskForRangeAgricultureShrub"/>	
 
         <wmsLayer
           lid="AF"
@@ -501,10 +503,11 @@
           url="http://rain.nemac.org/~derek/fswms/html/ews?TRANSPARENT=true"
           srs="EPSG:3785"
           layers="EFETAC-NASA_1YrBaseline_previous2"
-          name="previous2_mar22_apr14.tif"
+          name="previous2_mar30_apr22.tif"
           styles="default" 
           identify="true"
-          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"/>	
+          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"
+          mask="MaskForDeciduousForest,MaskForConiferForest,MaskForMixedForest,MaskForRangeAgricultureShrub"/>	
       </wmsSubgroup>
       <wmsSubgroup label="   Change from All-Year Baseline (all disturbances)">
 
@@ -514,10 +517,11 @@
           url="http://rain.nemac.org/~derek/fswms/html/ews?TRANSPARENT=true"
           srs="EPSG:3785"
           layers="EFETAC-NASA_current"
-          name="current_apr7_apr30.tif"
+          name="current_apr15_may8.tif"
           styles="default" 
           identify="true"
-          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"/>	
+          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"
+          mask="MaskForDeciduousForest,MaskForConiferForest,MaskForMixedForest,MaskForRangeAgricultureShrub"/>	
 
         <wmsLayer
           lid="AB"
@@ -525,10 +529,11 @@
           url="http://rain.nemac.org/~derek/fswms/html/ews?TRANSPARENT=true"
           srs="EPSG:3785"
           layers="EFETAC-NASA_previous1"
-          name="previous1_mar30_apr22.tif"
+          name="previous1_apr7_apr30.tif"
           styles="default" 
           identify="true"
-          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"/>	
+          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"
+          mask="MaskForDeciduousForest,MaskForConiferForest,MaskForMixedForest,MaskForRangeAgricultureShrub"/>	
 
         <wmsLayer
           lid="AC"
@@ -536,10 +541,11 @@
           url="http://rain.nemac.org/~derek/fswms/html/ews?TRANSPARENT=true"
           srs="EPSG:3785"
           layers="EFETAC-NASA_previous2"
-          name="previous2_mar22_apr14.tif"
+          name="previous2_mar30_apr22.tif"
           styles="default" 
           identify="true"
-          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"/>	
+          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"
+          mask="MaskForDeciduousForest,MaskForConiferForest,MaskForMixedForest,MaskForRangeAgricultureShrub"/>	
       </wmsSubgroup>
       <wmsSubgroup label="   Change from 3-Year Baseline (&lt;3-Yr old disturbances)">
 
@@ -549,10 +555,11 @@
           url="http://rain.nemac.org/~derek/fswms/html/ews?TRANSPARENT=true"
           srs="EPSG:3785"
           layers="EFETAC-NASA_3YrBaseline_current"
-          name="current_apr7_apr30.tif"
+          name="current_apr15_may8.tif"
           styles="default" 
           identify="true"
-          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"/>	
+          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"
+          mask="MaskForDeciduousForest,MaskForConiferForest,MaskForMixedForest,MaskForRangeAgricultureShrub"/>	
 
         <wmsLayer
           lid="AH"
@@ -560,10 +567,11 @@
           url="http://rain.nemac.org/~derek/fswms/html/ews?TRANSPARENT=true"
           srs="EPSG:3785"
           layers="EFETAC-NASA_3YrBaseline_previous1"
-          name="previous1_mar30_apr22.tif"
+          name="previous1_apr7_apr30.tif"
           styles="default" 
           identify="true"
-          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"/>	
+          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"
+          mask="MaskForDeciduousForest,MaskForConiferForest,MaskForMixedForest,MaskForRangeAgricultureShrub"/>	
 
         <wmsLayer
           lid="AI"
@@ -571,10 +579,11 @@
           url="http://rain.nemac.org/~derek/fswms/html/ews?TRANSPARENT=true"
           srs="EPSG:3785"
           layers="EFETAC-NASA_3YrBaseline_previous2"
-          name="previous2_mar22_apr14.tif"
+          name="previous2_mar30_apr22.tif"
           styles="default" 
           identify="true"
-          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"/>	
+          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"
+          mask="MaskForDeciduousForest,MaskForConiferForest,MaskForMixedForest,MaskForRangeAgricultureShrub"/>	
       </wmsSubgroup>
       <wmsSubgroup label="   Early Detect (ALC) Change from previous year">
 
@@ -584,10 +593,11 @@
           url="http://rain.nemac.org/~derek/fswms/html/ews?TRANSPARENT=true"
           srs="EPSG:3785"
           layers="EFETAC-NASA_ALC1YR_current"
-          name="current_apr7_apr30.tif"
+          name="current_apr15_may8.tif"
           styles="default" 
           identify="true"
-          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"/>	
+          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"
+          mask="MaskForDeciduousForest,MaskForConiferForest,MaskForMixedForest,MaskForRangeAgricultureShrub"/>	
 
         <wmsLayer
           lid="ALCAB"
@@ -595,10 +605,11 @@
           url="http://rain.nemac.org/~derek/fswms/html/ews?TRANSPARENT=true"
           srs="EPSG:3785"
           layers="EFETAC-NASA_ALC1YR_previous1"
-          name="previous1_mar30_apr22.tif"
+          name="previous1_apr7_apr30.tif"
           styles="default" 
           identify="true"
-          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"/>	
+          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"
+          mask="MaskForDeciduousForest,MaskForConiferForest,MaskForMixedForest,MaskForRangeAgricultureShrub"/>	
 
         <wmsLayer
           lid="ALCAC"
@@ -606,10 +617,11 @@
           url="http://rain.nemac.org/~derek/fswms/html/ews?TRANSPARENT=true"
           srs="EPSG:3785"
           layers="EFETAC-NASA_ALC1YR_previous2"
-          name="previous2_mar22_apr14.tif"
+          name="previous2_mar30_apr22.tif"
           styles="default" 
           identify="true"
-          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"/>	
+          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"
+          mask="MaskForDeciduousForest,MaskForConiferForest,MaskForMixedForest,MaskForRangeAgricultureShrub"/>	
       </wmsSubgroup>
       <wmsSubgroup label="   Synoptic Change from All-Year pheno-cluster max (MUC)">
 
@@ -622,7 +634,8 @@
           name="current_apr7_apr30.tif"
           styles="default" 
           identify="true"
-          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"/>	
+          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"
+          mask="MaskForDeciduousForest,MaskForConiferForest,MaskForMixedForest,MaskForRangeAgricultureShrub"/>	
 
         <wmsLayer
           lid="MUCAB"
@@ -633,7 +646,8 @@
           name="previous1_mar30_apr22.tif"
           styles="default" 
           identify="true"
-          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"/>	
+          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"
+          mask="MaskForDeciduousForest,MaskForConiferForest,MaskForMixedForest,MaskForRangeAgricultureShrub"/>	
 
         <wmsLayer
           lid="MUCAC"
@@ -644,7 +658,8 @@
           name="previous2_mar22_apr14.tif"
           styles="default" 
           identify="true"
-          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"/>	
+          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"
+          mask="MaskForDeciduousForest,MaskForConiferForest,MaskForMixedForest,MaskForRangeAgricultureShrub"/>	
       </wmsSubgroup>
       <wmsSubgroup label="   Synoptic Change from All-Year mean of maximums (MMAX)">
 
@@ -654,10 +669,11 @@
           url="http://rain.nemac.org/~derek/fswms/html/ews?TRANSPARENT=true"
           srs="EPSG:3785"
           layers="EFETAC-NASA_MoMAllYear_current"
-          name="current_apr7_apr30.tif"
+          name="current_apr15_may8.tif"
           styles="default" 
           identify="true"
-          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"/>	
+          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"
+          mask="MaskForDeciduousForest,MaskForConiferForest,MaskForMixedForest,MaskForRangeAgricultureShrub"/>	
 
         <wmsLayer
           lid="MoMAB"
@@ -665,10 +681,11 @@
           url="http://rain.nemac.org/~derek/fswms/html/ews?TRANSPARENT=true"
           srs="EPSG:3785"
           layers="EFETAC-NASA_MoMAllYear_previous1"
-          name="previous1_mar30_apr22.tif"
+          name="previous1_apr7_apr30.tif"
           styles="default" 
           identify="true"
-          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"/>	
+          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"
+          mask="MaskForDeciduousForest,MaskForConiferForest,MaskForMixedForest,MaskForRangeAgricultureShrub"/>	
 
         <wmsLayer
           lid="MoMAC"
@@ -676,10 +693,11 @@
           url="http://rain.nemac.org/~derek/fswms/html/ews?TRANSPARENT=true"
           srs="EPSG:3785"
           layers="EFETAC-NASA_MoMAllYear_previous2"
-          name="previous2_mar22_apr14.tif"
+          name="previous2_mar30_apr22.tif"
           styles="default" 
           identify="true"
-          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"/>	
+          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"
+          mask="MaskForDeciduousForest,MaskForConiferForest,MaskForMixedForest,MaskForRangeAgricultureShrub"/>	
       </wmsSubgroup>
 
     <wmsSubgroup label="RSAC-FHTET Forest Change">
@@ -692,10 +710,11 @@
           url="http://rain.nemac.org/~derek/fswms/html/ews?TRANSPARENT=true"
           srs="EPSG:3785"
           layers="RSAC-FHTET_current"
-          name="current_apr7_apr22.tif"
+          name="current_apr15_apr30.tif"
           styles="default" 
           identify="true"
-          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/RSAC-FHTET_CT_7-6-2011_clipped.png"/>	
+          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/RSAC-FHTET_CT_7-6-2011_clipped.png"
+          mask=""/>	
 
         <wmsLayer
           lid="AN"
@@ -703,10 +722,11 @@
           url="http://rain.nemac.org/~derek/fswms/html/ews?TRANSPARENT=true"
           srs="EPSG:3785"
           layers="RSAC-FHTET_previous1"
-          name="previous1_mar22_apr6.tif"
+          name="previous1_apr7_apr22.tif"
           styles="default" 
           identify="true"
-          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/RSAC-FHTET_CT_7-6-2011_clipped.png"/>	
+          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/RSAC-FHTET_CT_7-6-2011_clipped.png"
+          mask=""/>	
 
         <wmsLayer
           lid="AP"
@@ -714,10 +734,11 @@
           url="http://rain.nemac.org/~derek/fswms/html/ews?TRANSPARENT=true"
           srs="EPSG:3785"
           layers="RSAC-FHTET_previous2"
-          name="previous2_mar14_mar29.tif"
+          name="previous2_mar22_apr6.tif"
           styles="default" 
           identify="true"
-          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/RSAC-FHTET_CT_7-6-2011_clipped.png"/>	
+          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/RSAC-FHTET_CT_7-6-2011_clipped.png"
+          mask=""/>	
       </wmsSubgroup>
       <wmsSubgroup label="   Change from 5-Year Baseline">
 
@@ -727,10 +748,11 @@
           url="http://rain.nemac.org/~derek/fswms/html/ews?TRANSPARENT=true"
           srs="EPSG:3785"
           layers="RSAC-FHTET_5YrBaseline_current"
-          name="current_apr7_apr22_5yr.tif"
+          name="current_apr15_apr30_5yr.tif"
           styles="default" 
           identify="true"
-          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/RSAC-FHTET_CT_7-6-2011_clipped.png"/>	
+          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/RSAC-FHTET_CT_7-6-2011_clipped.png"
+          mask=""/>	
 
         <wmsLayer
           lid="AR"
@@ -738,10 +760,11 @@
           url="http://rain.nemac.org/~derek/fswms/html/ews?TRANSPARENT=true"
           srs="EPSG:3785"
           layers="RSAC-FHTET_5YrBaseline_previous1"
-          name="previous1_mar22_apr6_5yr.tif"
+          name="previous1_apr7_apr22_5yr.tif"
           styles="default" 
           identify="true"
-          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/RSAC-FHTET_CT_7-6-2011_clipped.png"/>	
+          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/RSAC-FHTET_CT_7-6-2011_clipped.png"
+          mask=""/>	
 
         <wmsLayer
           lid="AS"
@@ -749,10 +772,11 @@
           url="http://rain.nemac.org/~derek/fswms/html/ews?TRANSPARENT=true"
           srs="EPSG:3785"
           layers="RSAC-FHTET_5YrBaseline_previous2"
-          name="previous2_mar14_mar29_5yr.tif"
+          name="previous2_mar22_apr6_5yr.tif"
           styles="default" 
           identify="true"
-          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/RSAC-FHTET_CT_7-6-2011_clipped.png"/>	
+          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/RSAC-FHTET_CT_7-6-2011_clipped.png"
+          mask=""/>	
       </wmsSubgroup>
 
   </wmsGroup>
@@ -2259,6 +2283,16 @@
           styles="default" 
           identify="true"
           legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"/>
+        <wmsLayer
+          lid="NRTAHU"
+          visible="false"
+          url="http://rain.nemac.org/~derek/fswms/html/ews1year?TRANSPARENT=true"
+          srs="EPSG:3785"
+          layers="EFETAC-NASA_1Year_20130508"
+          name="20130508"
+          styles="default" 
+          identify="true"
+          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"/>
     </wmsSubgroup>
     <wmsSubgroup label="Archived MODIS NRT 3-Year Baseline (TACs-NASA)">
     
@@ -3453,7 +3487,7 @@
           identify="true"
           legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"/>
         <wmsLayer
-          lid="NRTAHU"
+          lid="NRTAHZ"
           visible="false"
           url="http://rain.nemac.org/~derek/fswms/html/ews3year?TRANSPARENT=true"
           srs="EPSG:3785"
@@ -3759,6 +3793,16 @@
           srs="EPSG:3785"
           layers="EFETAC-NASA_3Year_20130430"
           name="20130430"
+          styles="default" 
+          identify="true"
+          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"/>
+        <wmsLayer
+          lid="NRTAHV"
+          visible="false"
+          url="http://rain.nemac.org/~derek/fswms/html/ews3year?TRANSPARENT=true"
+          srs="EPSG:3785"
+          layers="EFETAC-NASA_3Year_20130508"
+          name="20130508"
           styles="default" 
           identify="true"
           legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"/>
@@ -5265,6 +5309,16 @@
           styles="default" 
           identify="true"
           legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"/>
+        <wmsLayer
+          lid="NRTAHX"
+          visible="false"
+          url="http://rain.nemac.org/~derek/fswms/html/ews?TRANSPARENT=true"
+          srs="EPSG:3785"
+          layers="EFETAC-NASA_20130508"
+          name="20130508"
+          styles="default" 
+          identify="true"
+          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"/>
     </wmsSubgroup>
   </wmsGroup>
   
@@ -6768,6 +6822,16 @@
           srs="EPSG:3785"
           layers="EFETAC-NASA_TC_20130430_24"
           name="True Color 20130430_24"
+          styles="default" 
+          identify="true"
+          legend="http://rain.nemac.org/~derek/fswms/html/"/>
+        <wmsLayer
+          lid="NRTAHY"
+          visible="false"
+          url="http://rain.nemac.org/~derek/fswms/html/ewstruecolor?TRANSPARENT=true"
+          srs="EPSG:3785"
+          layers="EFETAC-NASA_TC_20130508_24"
+          name="True Color 20130508_24"
           styles="default" 
           identify="true"
           legend="http://rain.nemac.org/~derek/fswms/html/"/>
