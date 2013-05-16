@@ -176,6 +176,10 @@ a{
 /*   width:auto; */
 }
 
+.layer-properties-dialog table td{
+    border-collapse: collapse;
+}
+
 .splashScreenStyle {
     opacity: 0.9 !important;; 
 }
