@@ -623,7 +623,7 @@
           legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"
           mask="MaskForDeciduousForest,MaskForConiferForest,MaskForMixedForest,MaskForRangeAgricultureShrub"/>	
       </wmsSubgroup>
-      <wmsSubgroup label="   Synoptic Change from All-Year pheno-cluster max (MUC)">
+      <wmsSubgroup label="   Seasonally-Adjusted Change from All-Year pheno-cluster max (MUC)">
 
         <wmsLayer
           lid="MUCAA"
@@ -631,7 +631,7 @@
           url="http://rain.nemac.org/~derek/fswms/html/ews?TRANSPARENT=true"
           srs="EPSG:3785"
           layers="EFETAC-NASA_MUCAllYear_current"
-          name="current_apr7_apr30.tif"
+          name="current_apr15_may8.tif"
           styles="default" 
           identify="true"
           legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"
@@ -643,7 +643,7 @@
           url="http://rain.nemac.org/~derek/fswms/html/ews?TRANSPARENT=true"
           srs="EPSG:3785"
           layers="EFETAC-NASA_MUCAllYear_previous1"
-          name="previous1_mar30_apr22.tif"
+          name="previous1_apr7_apr30.tif"
           styles="default" 
           identify="true"
           legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"
@@ -655,13 +655,13 @@
           url="http://rain.nemac.org/~derek/fswms/html/ews?TRANSPARENT=true"
           srs="EPSG:3785"
           layers="EFETAC-NASA_MUCAllYear_previous2"
-          name="previous2_mar22_apr14.tif"
+          name="previous2_mar30_apr22.tif"
           styles="default" 
           identify="true"
           legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"
           mask="MaskForDeciduousForest,MaskForConiferForest,MaskForMixedForest,MaskForRangeAgricultureShrub"/>	
       </wmsSubgroup>
-      <wmsSubgroup label="   Synoptic Change from All-Year mean of maximums (MMAX)">
+      <wmsSubgroup label="   Seasonally-Adjusted Change from All-Year mean of maximums (MMAX)">
 
         <wmsLayer
           lid="MoMAA"
@@ -734,7 +734,7 @@
           url="http://rain.nemac.org/~derek/fswms/html/ews?TRANSPARENT=true"
           srs="EPSG:3785"
           layers="RSAC-FHTET_previous2"
-          name="previous2_mar22_apr6.tif"
+          name="previous2_mar30_apr14.tif"
           styles="default" 
           identify="true"
           legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/RSAC-FHTET_CT_7-6-2011_clipped.png"
@@ -772,7 +772,7 @@
           url="http://rain.nemac.org/~derek/fswms/html/ews?TRANSPARENT=true"
           srs="EPSG:3785"
           layers="RSAC-FHTET_5YrBaseline_previous2"
-          name="previous2_mar22_apr6_5yr.tif"
+          name="previous2_mar30_apr14_5yr.tif"
           styles="default" 
           identify="true"
           legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/RSAC-FHTET_CT_7-6-2011_clipped.png"
@@ -7286,6 +7286,16 @@
            name="Current Drought Monitor" 
            legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/drought-monitor.png" />
         
+        <wmsLayer
+          lid="DRTAVU"
+          visible="false"
+          url="http://torka.unl.edu:8080/cgi-bin/mapserv.exe?map=/ms4w/apps/dm/service/usdm130514_wms.map&amp;TRANSPARENT=true" 
+          srs="EPSG:900913"
+          layers="usdm130514"
+          name="05/14/2013"
+          styles="default" 
+          identify="false"
+          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/drought-monitor.png"/>
         <wmsLayer
           lid="DRTAVT"
           visible="false"
