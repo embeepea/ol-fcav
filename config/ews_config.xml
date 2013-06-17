@@ -399,6 +399,36 @@
   <wmsGroup gid="G03" name="US_FHM_ADS" label="Historical Aerial Disturbance Surveys (USFS FHM)">
     <wmsSubgroup label="USFS FHM">
     <wmsLayer 
+       lid="ADS2000"
+       visible="false" 
+       url="http://rain.nemac.org/~derek/fswms/html/vlayers?TRANSPARENT=true" 
+       srs="EPSG:3785" 
+       layers="ads_2000" 
+       styles="default" 
+       identify="true" 
+       name="2000 Aerial Disturbance Surveys (FHTET)" 
+       legend="http://rain.nemac.org/~derek/fswms/html/vlayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=ads_2000&amp;VERSION=1.1.1&amp;FORMAT=image/png"/>       
+    <wmsLayer 
+       lid="ADS2001"
+       visible="false" 
+       url="http://rain.nemac.org/~derek/fswms/html/vlayers?TRANSPARENT=true" 
+       srs="EPSG:3785" 
+       layers="ads_2001" 
+       styles="default" 
+       identify="true" 
+       name="2001 Aerial Disturbance Surveys (FHTET)" 
+       legend="http://rain.nemac.org/~derek/fswms/html/vlayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=ads_2001&amp;VERSION=1.1.1&amp;FORMAT=image/png"/>       
+    <wmsLayer 
+       lid="ADS2002"
+       visible="false" 
+       url="http://rain.nemac.org/~derek/fswms/html/vlayers?TRANSPARENT=true" 
+       srs="EPSG:3785" 
+       layers="ads_2002" 
+       styles="default" 
+       identify="true" 
+       name="2002 Aerial Disturbance Surveys (FHTET)" 
+       legend="http://rain.nemac.org/~derek/fswms/html/vlayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=ads_2002&amp;VERSION=1.1.1&amp;FORMAT=image/png"/>       
+    <wmsLayer 
        lid="AAS"
        visible="false" 
        url="http://rain.nemac.org/~derek/fswms/html/vlayers?TRANSPARENT=true" 
@@ -468,6 +498,36 @@
        identify="true" 
        name="2009 Aerial Disturbance Surveys (FHTET)" 
        legend="http://rain.nemac.org/~derek/fswms/html/vlayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=ads_2009&amp;VERSION=1.1.1&amp;FORMAT=image/png"/>
+    <wmsLayer 
+       lid="ADS2010"
+       visible="false" 
+       url="http://rain.nemac.org/~derek/fswms/html/vlayers?TRANSPARENT=true" 
+       srs="EPSG:3785" 
+       layers="ads_2010" 
+       styles="default" 
+       identify="true" 
+       name="2010 Aerial Disturbance Surveys (FHTET)" 
+       legend="http://rain.nemac.org/~derek/fswms/html/vlayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=ads_2010&amp;VERSION=1.1.1&amp;FORMAT=image/png"/>       
+    <wmsLayer 
+       lid="ADS2011"
+       visible="false" 
+       url="http://rain.nemac.org/~derek/fswms/html/vlayers?TRANSPARENT=true" 
+       srs="EPSG:3785" 
+       layers="ads_2011" 
+       styles="default" 
+       identify="true" 
+       name="2011 Aerial Disturbance Surveys (FHTET)" 
+       legend="http://rain.nemac.org/~derek/fswms/html/vlayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=ads_2011&amp;VERSION=1.1.1&amp;FORMAT=image/png"/>       
+     <wmsLayer 
+       lid="ADS2012"
+       visible="false" 
+       url="http://rain.nemac.org/~derek/fswms/html/vlayers?TRANSPARENT=true" 
+       srs="EPSG:3785" 
+       layers="ads_2012" 
+       styles="default" 
+       identify="true" 
+       name="2012 Aerial Disturbance Surveys (FHTET)" 
+       legend="http://rain.nemac.org/~derek/fswms/html/vlayers?SERVICE=WMS&amp;REQUEST=GetLegendGraphic&amp;layer=ads_2012&amp;VERSION=1.1.1&amp;FORMAT=image/png"/>       
     <wmsLayer 
        lid="BNE"
        visible="false" 
