@@ -2723,6 +2723,18 @@
           legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"
           mask="MaskForDeciduousForest,MaskForConiferForest,MaskForMixedForest,MaskForEarlyNon-Forest"/>	
 
+        <wmsLayer
+          lid="NRTALB"
+          visible="false"
+          url="http://rain.nemac.org/~derek/fswms/html/ews1year?TRANSPARENT=true"
+          srs="EPSG:3785"
+          layers="EFETAC-NASA_1Year_20130617"
+          name="20130617"
+          styles="default" 
+          identify="true"
+          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"
+          mask="MaskForDeciduousForest,MaskForConiferForest,MaskForMixedForest,MaskForEarlyNon-Forest"/>	
+
     </wmsSubgroup>
     <wmsSubgroup label="Archived MODIS NRT 3-Year Baseline (TACs-NASA)">
     
@@ -4155,7 +4167,7 @@
           mask="MaskForDeciduousForest,MaskForConiferForest,MaskForMixedForest,MaskForEarlyNon-Forest"/>	
 
         <wmsLayer
-          lid="NRTALB"
+          lid="NRTALH"
           visible="false"
           url="http://rain.nemac.org/~derek/fswms/html/ews3year?TRANSPARENT=true"
           srs="EPSG:3785"
@@ -4581,6 +4593,18 @@
           srs="EPSG:3785"
           layers="EFETAC-NASA_3Year_20130609"
           name="20130609"
+          styles="default" 
+          identify="true"
+          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"
+          mask="MaskForDeciduousForest,MaskForConiferForest,MaskForMixedForest,MaskForEarlyNon-Forest"/>	
+
+        <wmsLayer
+          lid="NRTALC"
+          visible="false"
+          url="http://rain.nemac.org/~derek/fswms/html/ews3year?TRANSPARENT=true"
+          srs="EPSG:3785"
+          layers="EFETAC-NASA_3Year_20130617"
+          name="20130617"
           styles="default" 
           identify="true"
           legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"
@@ -6449,6 +6473,18 @@
           legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"
           mask="MaskForDeciduousForest,MaskForConiferForest,MaskForMixedForest,MaskForEarlyNon-Forest"/>	
 
+        <wmsLayer
+          lid="NRTALF"
+          visible="false"
+          url="http://rain.nemac.org/~derek/fswms/html/ews?TRANSPARENT=true"
+          srs="EPSG:3785"
+          layers="EFETAC-NASA_20130617"
+          name="20130617"
+          styles="default" 
+          identify="true"
+          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"
+          mask="MaskForDeciduousForest,MaskForConiferForest,MaskForMixedForest,MaskForEarlyNon-Forest"/>	
+
     </wmsSubgroup>
     <wmsSubgroup label="Archived Early Detect (ALC) Change from previous year">
     
@@ -6687,6 +6723,18 @@
           srs="EPSG:3785"
           layers="EFETAC-NASA_ALC1YR_20130609"
           name="20130609"
+          styles="default" 
+          identify="true"
+          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"
+          mask="MaskForDeciduousForest,MaskForConiferForest,MaskForMixedForest,MaskForEarlyNon-Forest"/>	
+
+        <wmsLayer
+          lid="NRTALG"
+          visible="false"
+          url="http://rain.nemac.org/~derek/fswms/html/ews1year?TRANSPARENT=true"
+          srs="EPSG:3785"
+          layers="EFETAC-NASA_ALC1YR_20130617"
+          name="20130617"
           styles="default" 
           identify="true"
           legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"
@@ -6935,6 +6983,18 @@
           legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"
           mask="MaskForDeciduousForest,MaskForConiferForest,MaskForMixedForest,MaskForEarlyNon-Forest"/>	
 
+        <wmsLayer
+          lid="NRTALH"
+          visible="false"
+          url="http://rain.nemac.org/~derek/fswms/html/ews?TRANSPARENT=true"
+          srs="EPSG:3785"
+          layers="EFETAC-NASA_MUCAllYear_20130617"
+          name="20130617"
+          styles="default" 
+          identify="true"
+          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"
+          mask="MaskForDeciduousForest,MaskForConiferForest,MaskForMixedForest,MaskForEarlyNon-Forest"/>	
+
     </wmsSubgroup>
     <wmsSubgroup label="Archived Seasonally-Adjusted Change from All-Year mean of maximums (MMAX)">
     
@@ -7173,6 +7233,18 @@
           srs="EPSG:3785"
           layers="EFETAC-NASA_MoMAllYear_20130609"
           name="20130609"
+          styles="default" 
+          identify="true"
+          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"
+          mask="MaskForDeciduousForest,MaskForConiferForest,MaskForMixedForest,MaskForEarlyNon-Forest"/>	
+
+        <wmsLayer
+          lid="NRTALI"
+          visible="false"
+          url="http://rain.nemac.org/~derek/fswms/html/ews?TRANSPARENT=true"
+          srs="EPSG:3785"
+          layers="EFETAC-NASA_MoMAllYear_20130617"
+          name="20130617"
           styles="default" 
           identify="true"
           legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"
@@ -9044,6 +9116,18 @@
           legend="http://rain.nemac.org/~derek/fswms/html/"
           mask=""/>	
 
+        <wmsLayer
+          lid="NRTALE"
+          visible="false"
+          url="http://rain.nemac.org/~derek/fswms/html/ewstruecolor?TRANSPARENT=true"
+          srs="EPSG:3785"
+          layers="EFETAC-NASA_TC_20130617_24"
+          name="True Color 20130617_24"
+          styles="default" 
+          identify="true"
+          legend="http://rain.nemac.org/~derek/fswms/html/"
+          mask=""/>	
+
     </wmsSubgroup>
   </wmsGroup>
   <wmsGroup gid="G07" name="Archived_RSAC" label="Archived RSAC-FHTET Forest Change Disturbance">
@@ -9495,6 +9579,16 @@
            name="Current Drought Monitor" 
            legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/drought-monitor.png" />
         
+        <wmsLayer
+          lid="DRTAVZ"
+          visible="false"
+          url="http://torka.unl.edu:8080/cgi-bin/mapserv.exe?map=/ms4w/apps/dm/service/usdm130618_wms.map&amp;TRANSPARENT=true" 
+          srs="EPSG:900913"
+          layers="usdm130618"
+          name="06/18/2013"
+          styles="default" 
+          identify="false"
+          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/drought-monitor.png"/>
         <wmsLayer
           lid="DRTAVY"
           visible="false"
@@ -17181,7 +17275,8 @@
 	 styles="default" 
 	 identify="true" 
 	 name="Phenoregions 50 MaxMode" 
-	 legend=""/>
+	 legend=""
+     mask="MaskForDeciduousForest,MaskForConiferForest,MaskForMixedForest,MaskForEarlyNon-Forest"/>
       <wmsLayer 
 	 lid="PR100MM"
 	 visible="false" 
@@ -17191,7 +17286,8 @@
 	 styles="default" 
 	 identify="true" 
 	 name="Phenoregions 100 MaxMode" 
-	 legend=""/>
+	 legend=""
+     mask="MaskForDeciduousForest,MaskForConiferForest,MaskForMixedForest,MaskForEarlyNon-Forest"/>
       <wmsLayer 
 	 lid="PR200MM"
 	 visible="false" 
@@ -17201,7 +17297,8 @@
 	 styles="default" 
 	 identify="true" 
 	 name="Phenoregions 200 MaxMode" 
-	 legend=""/>
+	 legend=""
+     mask="MaskForDeciduousForest,MaskForConiferForest,MaskForMixedForest,MaskForEarlyNon-Forest"/>
       <wmsLayer 
 	 lid="PR500MM"
 	 visible="false" 
@@ -17211,7 +17308,8 @@
 	 styles="default" 
 	 identify="true" 
 	 name="Phenoregions 500 MaxMode" 
-	 legend=""/>
+	 legend=""
+     mask="MaskForDeciduousForest,MaskForConiferForest,MaskForMixedForest,MaskForEarlyNon-Forest"/>
       <wmsLayer 
 	 lid="PR1000MM"
 	 visible="false" 
@@ -17221,7 +17319,8 @@
 	 styles="default" 
 	 identify="true" 
 	 name="Phenoregions 1000 MaxMode" 
-	 legend=""/>
+	 legend=""
+     mask="MaskForDeciduousForest,MaskForConiferForest,MaskForMixedForest,MaskForEarlyNon-Forest"/>
       <wmsLayer 
 	 lid="PR5000MM"
 	 visible="false" 
@@ -17231,7 +17330,8 @@
 	 styles="default" 
 	 identify="true" 
 	 name="Phenoregions 5000 MaxMode" 
-	 legend=""/>
+	 legend=""
+     mask="MaskForDeciduousForest,MaskForConiferForest,MaskForMixedForest,MaskForEarlyNon-Forest"/>
 	</wmsSubgroup>
     <wmsSubgroup label="Landcover">
       <wmsLayer 
