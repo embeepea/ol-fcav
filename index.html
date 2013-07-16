@@ -113,10 +113,27 @@
 
           <div title="Map Tools" id="mapToolsDialog">
             <div id="mapToolsAccordion" style="height:400px;">
-              <h3><a href="#shareMapAccordion">Share this Map</a></h3>
-              <div><textarea class="shareMapUrl" readonly="true"></textarea></div>
-              <h3><a href="#legendAccordion">Legend (click to clear layer)</a></h3>
-              <div id="legend"></div>
+                <h3><a href="#maskAccordion">Masks</a></h3>
+                <div id="masks">
+                    <table>
+                        <tr>
+                            <td><input class="mask-toggle" type="checkbox" name="DeciduousForest" id="DeciduousForest" value="MaskForDeciduousForest">Show Only: Deciduous Forest</td>
+                        </tr>
+                        <tr>
+                            <td><input class="mask-toggle" type="checkbox" name="ConiferForest" id="ConiferForest" value="MaskForConiferForest">Show Only: Conifer Forest</td>
+                        </tr>
+                        <tr>
+                            <td><input class="mask-toggle" type="checkbox" name="MixedForest" id="MixedForest" value="MaskForMixedForest">Show Only: Mixed Forest</td>
+                        </tr>
+                        <tr>
+                            <td><input class="mask-toggle" type="checkbox" name="EarlyNon-Forest" id="EarlyNon-Forest" value="MaskForEarlyNon-Forest">Show Only: Early Non-Forest</td>
+                        </tr>                        
+                    </table>
+                </div>
+                <h3><a href="#shareMapAccordion">Share this Map</a></h3>
+                <div><textarea class="shareMapUrl" readonly="true"></textarea></div>
+                <h3><a href="#legendAccordion">Legend (click to clear layer)</a></h3>
+                <div id="legend"></div>
             </div> 
           </div>
 
