@@ -120,15 +120,10 @@ Map Layers & Map Tools Styles
     font-size: .80em;
 }
 
-#mapToolsAccordion .baseLbl {
-    background: #cdcdcd;
-    font-size: 1.3em;
-    font-weight: bold;
-}
-
-#mapToolsAccordion .baseLayersDiv .labelSpan {
-    font-style: italic;
-    font-weight: bold;
+textarea.shareMapUrl {
+    width: 100%;
+    height: 120px;
+    resize: none;
 }
 
 #layerPickerDialog {
@@ -142,17 +137,6 @@ Map Layers & Map Tools Styles
     height: 100%;
     background: #FFFFFF;
     font-size: .80em;
-}
-
-#layerPickerAccordion .baseLbl {
-    background: #cdcdcd;
-    font-size: 1.3em;
-    font-weight: bold;
-}
-
-#layerPickerAccordion .baseLayersDiv .labelSpan {
-    font-style: italic;
-    font-weight: bold;
 }
 
 .layerPropertiesIcon {
@@ -175,12 +159,6 @@ Map Layers & Map Tools Styles
     width: 120px;
     margin-left: 8px;
     margin-right: 5px;
-}
-
-textarea.shareMapUrl {
-    width: 100%;
-    height: 120px;
-    resize: none;
 }
 
 /*
@@ -285,6 +263,17 @@ Open Layers element Styles
     font-size: 9px;
 }
 
+#layerPickerAccordion .baseLbl {
+    background: #cdcdcd;
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+#mapToolsAccordion .baseLayersDiv .labelSpan {
+    font-style: italic;
+    font-weight: bold;
+}
+
 /*
 jQuery element Styles
 */
@@ -303,18 +292,4 @@ jQuery element Styles
     width: 16px;
     height: 16px;
     display: inline;
-}
-
-/*
-Unused. Should be deleted
-*/
-#leftmenuitems, #selectmenuitems, #maptoolmenuitems, #rightmenuitems {
-    width: 25%;
-    position: relative;
-    display: inline-block;
-    height: 30px;
-}
-
-#mapbase b, #maptheme b {
-    margin-right: 3px;
 }
