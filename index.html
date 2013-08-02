@@ -49,48 +49,54 @@
       <h2>Forest Change Assessment Viewer (OpenLayers Version)</h2>
     </div>
 
-    <div id="header" style="position: relative; z-index: 10;">
-      <div id="btnTglLyrPick" style="width:35px;display:inline-block;">
-        <img id="tglLyrPickPic" src="icons/layers.png"/>
-      </div>        
-      <div id="btnTglMapTools" style="width:35px;display:inline-block;">
-	<img id="tglLegendPic" src="icons/legend.png"/>
-      </div> 
-      <div id="btnAbout" style="width:35px;display:inline-block;">
-        <img id="aboutPic" src="icons/about.png"/>
+    <div id="header" style="position: relative; z-index: 10; text-align: left; height:auto">
+
+      <div style="display:inline-block;">
+        <div id="btnTglLyrPick" style="width:35px;display:inline-block; margin:0; position:relative; top:3px;">
+          <img id="tglLyrPickPic" src="icons/layers.png"/>
+        </div>
+        <div id="btnTglMapTools" style="width:35px;display:inline-block; position:relative; top:3px;">
+	  <img id="tglLegendPic" src="icons/legend.png"/>
+        </div>
+        <div id="btnAbout" style="width:35px;display:inline-block; position:relative; top:3px;">
+          <img id="aboutPic" src="icons/about.png"/>
+        </div>
       </div>
-      <div id="btnPan" style="display:inline-block;">
-	<img id="panPic" src="icons/pan.png"/>
+
+      <div style="display:inline-block;vertical-align:top;padding-top:5px;">
+        <div id="btnPan" style="display:inline-block;">
+	  <img id="panPic" src="icons/pan.png"/>
+        </div>
+        <div id="btnZoomIn" style="display:inline-block;">
+	  <img id="zoomInPic" src="icons/zoom-in.png"/>
+        </div>
+        <div id="btnZoomOut" style="display:inline-block;">
+	  <img id="zoomOutPic" src="icons/zoom-out.png"/>
+        </div>
+        <div id="btnID" style="display:inline-block;">
+	  <img id="idPic" src="icons/map-info.png"/>
+        </div>
+        <div id="btnZoomExtent" style="display:inline-block;">
+	  <img id="zoomExtentPic" src="icons/zoom-extent.png"/>
+        </div>
+        <div id="btnMultiGraph" style="display:inline-block;">
+	  <img id="multiGraphPic" src="icons/multigraph.png"/>
+        </div>
+        <div id="btnPrev" style="width:23px;display:inline-block;">
+          <img id="prevPic" title="Previous Extent" src="icons/prev.png"/>
+        </div>
+        <div id="btnNext" style="width:23px;display:inline-block;">
+          <img id="nextPic" title="Next Extent" src="icons/next.png"/>
+        </div>
       </div>
-      <div id="btnZoomIn" style="display:inline-block;">
-	<img id="zoomInPic" src="icons/zoom-in.png"/>
-      </div>
-      <div id="btnZoomOut" style="display:inline-block;">
-	<img id="zoomOutPic" src="icons/zoom-out.png"/>
-      </div>
-      <div id="btnID" style="display:inline-block;">
-	<img id="idPic" src="icons/map-info.png"/>
-      </div>
-      <div id="btnZoomExtent" style="display:inline-block;">
-	<img id="zoomExtentPic" src="icons/zoom-extent.png"/>
-      </div>
-      <div id="btnMultiGraph" style="display:inline-block;">
-	<img id="multiGraphPic" src="icons/multigraph.png"/>
-      </div>
-      <div id="btnPrev" style="width:23px;display:inline-block;">
-        <img id="prevPic" title="Previous Extent" src="icons/prev.png"/>
-      </div>
-      <div id="btnNext" style="width:23px;display:inline-block;">
-        <img id="nextPic" title="Next Extent" src="icons/next.png"/>
-      </div>
-      <div id="mapBase" style="display:inline-block;vertical-align:top;">
+      <div id="mapBase" style="display:inline-block;vertical-align:top;padding-top:6px;">
         <strong>Base Map:</strong><select id="baseCombo"></select>
       </div>
-      <div id="mapTheme" style="display:inline-block;vertical-align:top;">
-	<strong>Theme:</strong> <select id="themeCombo"></select>
+      <div id="mapTheme" style="display:inline-block;vertical-align:top;padding-top:6px;">
+	<strong>Theme:</strong><select id="themeCombo"></select>
       </div>
       <div id="txtFindArea" class="ui-widget" style="display:inline-block;vertical-align:top;">
-	<strong style="font-family: Arial, Helvetica, sans-serif; font-size: 11pt;">Find Area:</strong><input id="findArea" />
+	<strong style="font-family: Arial, Helvetica, sans-serif; font-size: 11pt;">Find Area:</strong><input id="findArea" style="position: relative; top:2px;"/>
       </div>
     </div>
 
