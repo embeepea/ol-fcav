@@ -1,3 +1,6 @@
+/*
+Global Styles
+*/
 body {
     margin: 0;
     padding: 0;
@@ -14,6 +17,18 @@ a {
     text-decoration: none;
 }
 
+.nonselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/*
+Header Styles
+*/
 #titleBar {
     z-index: 5;
     background: #665f45;
@@ -33,11 +48,14 @@ a {
     font-size: 1.25em;
 }
 
-#leftmenuitems, #selectmenuitems, #maptoolmenuitems, #rightmenuitems {
-    width: 25%;
-    position: relative;
-    display: inline-block;
-    height: 30px;
+#header {
+    z-index: 10002;
+    background: #dfddd0;
+    display: block;
+    height: 35px;
+    padding-left: 3px;
+    box-shadow: 3px 1px 5px #333;
+    text-align: center;
 }
 
 #btntgllyrpick, #btnhelp {
@@ -53,20 +71,42 @@ a {
     margin: 0 3px 3px 3px;
 }
 
-#mapbase b, #maptheme b {
-    margin-right: 3px;
+/*
+Map Styles
+*/
+#map {
+    position: relative;
+    width: 100%;
+    height: 100%;
 }
 
-#header {
-    z-index: 10002;
+/*
+Footer Styles
+*/
+#footer {
+    z-index: 10003;
     background: #dfddd0;
     display: block;
-    height: 35px;
+    height: 30px;
     padding-left: 3px;
     box-shadow: 3px 1px 5px #333;
     text-align: center;
 }
 
+#links {
+    float: left;
+}
+
+#latLonTracker {
+    float: right;
+    overflow: hidden;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+/*
+Map Layers & Map Tools Styles
+*/
 #mapToolsDialog {
     position: relative;
     z-index: 10003;
@@ -115,36 +155,12 @@ a {
     font-weight: bold;
 }
 
-.olControlAttribution {
-    bottom: 5px;
-    font-size: 9px;
-}
-
-#map {
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
-
-#identify_results td.layer-results {
-    width: 200px;
-}
-
-#identify_results td.layer-label {
-    font-weight: bold;
-    text-align: right;
-}
-
 .layerPropertiesIcon {
     margin-left: 5px;
 }
 
 .layer-properties-dialog table td{
     border-collapse: collapse;
-}
-
-.splashScreenStyle {
-    opacity: 0.9 !important;
 }
 
 .layer-properties-dialog td {
@@ -161,37 +177,45 @@ a {
     margin-right: 5px;
 }
 
-#fcavMultigraphMessage {
-    font-weight: bold;
-    margin-bottom: 4px;
-}
-
-.ajax-loader-image {
-    width: 16px;
-    height: 16px;
-    display: inline;
-}
-
 textarea.shareMapUrl {
     width: 100%;
     height: 120px;
     resize: none;
 }
 
-.ui-accordion .ui-accordion-content {
-    padding-left: 10px;
-    padding-right: 10px;
+/*
+Other Popup Styles
+*/
+.splashScreenStyle {
+    opacity: 0.9 !important;
 }
 
-.nonselectable {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+#identify_results {
+    border-collapse: collapse; 
 }
 
+#identify_results td {
+    border-collapse: collapse; 
+    border: .05em solid #C0C0C0;
+}
+
+#identify_results td.layer-results {
+    width: 200px;
+}
+
+#identify_results td.layer-label {
+    font-weight: bold;
+    text-align: right;
+}
+
+#fcavMultigraphMessage {
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+/*
+Open Layers element Styles
+*/
 .olControlScaleBar {
     bottom: 30px;
     left: 15px;
@@ -256,38 +280,41 @@ textarea.shareMapUrl {
     font-size: 13px;
 }
 
-#footer {
-    z-index: 10003;
-    background: #dfddd0;
-    display: block;
-    height: 30px;
-    padding-left: 3px;
-    box-shadow: 3px 1px 5px #333;
-    text-align: center;
+.olControlAttribution {
+    bottom: 5px;
+    font-size: 9px;
 }
 
-#links {
-    float: left;
-}
-
-#latLonTracker {
-    float: right;
-    overflow: hidden;
-    margin-top: 0;
-    margin-bottom: 0;
-}
-
+/*
+jQuery element Styles
+*/
 .ui-autocomplete {
     position: absolute;
     cursor: default;
     z-index: 4000 !important;
 }
 
-#identify_results {
-    border-collapse: collapse; 
+.ui-accordion .ui-accordion-content {
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
-#identify_results td {
-    border-collapse: collapse; 
-    border: .05em solid #C0C0C0;
+.ajax-loader-image {
+    width: 16px;
+    height: 16px;
+    display: inline;
+}
+
+/*
+Unused. Should be deleted
+*/
+#leftmenuitems, #selectmenuitems, #maptoolmenuitems, #rightmenuitems {
+    width: 25%;
+    position: relative;
+    display: inline-block;
+    height: 30px;
+}
+
+#mapbase b, #maptheme b {
+    margin-right: 3px;
 }
