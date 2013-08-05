@@ -2,6 +2,8 @@
 Global Styles
 */
 body {
+    width: 100%;
+    height: 100%;
     margin: 0;
     padding: 0;
 }
@@ -30,13 +32,12 @@ a {
 Header Styles
 */
 #titleBar {
-    z-index: 5;
+    z-index: 10;
     background: #665f45;
     padding: 5px;
     display: block;
     position: relative;
     font-family: Verdana, Geneva, sans-serif;
-    box-shadow: 0px 2px 3px #333;
 }
 
 #titlebar h2 {
@@ -49,33 +50,79 @@ Header Styles
 }
 
 #header {
-    z-index: 10002;
+    position: relative;
+    z-index: 10;
     background: #dfddd0;
     display: block;
-    height: 35px;
+    height: auto;
     padding-left: 3px;
     box-shadow: 3px 1px 5px #333;
-    text-align: center;
+}
+
+.header-bar {
+    display: inline-block;
+}
+
+#btn-small-group {
+    vertical-align: top;
+    padding-top: 5px;
+}
+
+.btn-large {
+    width: 35px;
+    position: relative;
+    top: 3px;
+}
+
+.input {
+    vertical-align: top;
+}
+
+.input-select {
+    padding-top: 6px;
+}
+
+#txtFindArea {
+    display: inline-block;
+    vertical-align: top;
+}
+
+#findAreaLabel {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11pt;
+}
+
+#findArea {
+    position: relative;
+    top: 2px;
 }
 
 #btntgllyrpick, #btnhelp {
-    float: left;
+/*    float: left;*/
 }
 
 #btntgllegend {
-    float: right;
+/*    float: right;*/
 }
 
 #btntgllyrpick, #btnhelp, #btntgllegend {
+/*
     position: relative;
     margin: 0 3px 3px 3px;
+*/
 }
 
 /*
 Map Styles
 */
 #map {
-    position: relative;
+    box-sizing: border-box;
+    padding-top: 65px !important;
+    padding-bottom: 23px !important;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
     width: 100%;
     height: 100%;
 }
@@ -84,17 +131,26 @@ Map Styles
 Footer Styles
 */
 #footer {
-    z-index: 10003;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    box-sizing: border-box;
+    width:100%;
+    z-index: 10;
+    height: auto;
+    padding: 3px;
     background: #dfddd0;
     display: block;
-    height: 30px;
-    padding-left: 3px;
-    box-shadow: 3px 1px 5px #333;
     text-align: center;
 }
 
 #links {
     float: left;
+}
+
+.link {
+    padding-right: 5px;
+    border-right: 1px solid #444;
 }
 
 #latLonTracker {
@@ -115,7 +171,7 @@ Map Layers & Map Tools Styles
 
 #mapToolsAccordion {
     width: 100%;
-    height: 100%;
+    height: 400px;
     background: #FFFFFF;
     font-size: .80em;
 }

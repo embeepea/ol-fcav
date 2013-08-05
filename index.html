@@ -43,71 +43,71 @@
 
   </head>
 
-  <body style="width:100%; height:100%;">
+  <body>
 
-    <div id="titleBar" style="position: relative; z-index: 10; box-shadow: none;">
+    <div id="titleBar">
       <h2>Forest Change Assessment Viewer (OpenLayers Version)</h2>
     </div>
 
-    <div id="header" style="position: relative; z-index: 10; text-align: left; height:auto">
+    <div id="header">
 
-      <div style="display:inline-block;">
-        <div id="btnTglLyrPick" style="width:35px;display:inline-block; margin:0; position:relative; top:3px;">
+      <div class="header-bar">
+        <div id="btnTglLyrPick" class="header-bar btn-large">
           <img id="tglLyrPickPic" src="icons/layers.png"/>
         </div>
-        <div id="btnTglMapTools" style="width:35px;display:inline-block; position:relative; top:3px;">
+        <div id="btnTglMapTools" class="header-bar btn-large">
 	  <img id="tglLegendPic" src="icons/legend.png"/>
         </div>
-        <div id="btnAbout" style="width:35px;display:inline-block; position:relative; top:3px;">
+        <div id="btnAbout" class="header-bar btn-large">
           <img id="aboutPic" src="icons/about.png"/>
         </div>
       </div>
 
-      <div style="display:inline-block;vertical-align:top;padding-top:5px;">
-        <div id="btnPan" style="display:inline-block;">
+      <div id="btn-small-group" class="header-bar">
+        <div id="btnPan" class="header-bar">
 	  <img id="panPic" src="icons/pan.png"/>
         </div>
-        <div id="btnZoomIn" style="display:inline-block;">
+        <div id="btnZoomIn" class="header-bar">
 	  <img id="zoomInPic" src="icons/zoom-in.png"/>
         </div>
-        <div id="btnZoomOut" style="display:inline-block;">
+        <div id="btnZoomOut" class="header-bar">
 	  <img id="zoomOutPic" src="icons/zoom-out.png"/>
         </div>
-        <div id="btnID" style="display:inline-block;">
+        <div id="btnID" class="header-bar">
 	  <img id="idPic" src="icons/map-info.png"/>
         </div>
-        <div id="btnZoomExtent" style="display:inline-block;">
+        <div id="btnZoomExtent" class="header-bar">
 	  <img id="zoomExtentPic" src="icons/zoom-extent.png"/>
         </div>
-        <div id="btnMultiGraph" style="display:inline-block;">
+        <div id="btnMultiGraph" class="header-bar">
 	  <img id="multiGraphPic" src="icons/multigraph.png"/>
         </div>
-        <div id="btnPrev" style="width:23px;display:inline-block;">
+        <div id="btnPrev" class="header-bar">
           <img id="prevPic" title="Previous Extent" src="icons/prev.png"/>
         </div>
-        <div id="btnNext" style="width:23px;display:inline-block;">
+        <div id="btnNext" class="header-bar">
           <img id="nextPic" title="Next Extent" src="icons/next.png"/>
         </div>
       </div>
-      <div id="mapBase" style="display:inline-block;vertical-align:top;padding-top:6px;">
+      <div id="mapBase" class="header-bar input input-select">
         <strong>Base Map:</strong><select id="baseCombo"></select>
       </div>
-      <div id="mapTheme" style="display:inline-block;vertical-align:top;padding-top:6px;">
+      <div id="mapTheme" class="header-bar input input-select">
 	<strong>Theme:</strong><select id="themeCombo"></select>
       </div>
-      <div id="txtFindArea" class="ui-widget" style="display:inline-block;vertical-align:top;">
-	<strong style="font-family: Arial, Helvetica, sans-serif; font-size: 11pt;">Find Area:</strong><input id="findArea" style="position: relative; top:2px;"/>
+      <div id="txtFindArea" class="ui-widget" class="header-bar input">
+	<strong id="findAreaLabel">Find Area:</strong><input id="findArea"/>
       </div>
     </div>
 
-    <div id="map" style="box-sizing: border-box; width:100%; height:100%; padding-top:65px !important; padding-bottom:23px !important; position:absolute; top:0px; left:0px;  z-index: 1;"></div>
+    <div id="map"></div>
 
-    <div id="footer" style="position: absolute; bottom:0px; left:0px; box-sizing: border-box; width:100%; z-index: 10; box-shadow: none; height:auto; padding:3px;">
+    <div id="footer">
       <div id="links">
-        <a href="http://forwarn.forestthreats.org" style="padding-right:5px; border-right:1px solid #444">forwarn.forestthreats.org</a>
-        <a href="http://forwarn.forestthreats.org/fcav/assets/disclaimer.htm" target="_blank" style="padding-right:5px; border-right:1px solid #444">Data Dislaimer</a>
-        <a href="http://forwarn.forestthreats.org/fcav/assets/FCAV_Users_Guide_4.2.2012.pdf" target="_blank" style="padding-right:5px; border-right:1px solid #444">FCAV Users Guide</a>
-	<a href="http://forwarn.forestthreats.org/fcav/assets/ForestChangeProductsDescriptions.pdf" target="_blank">Change Product Descriptions</a>
+        <a href="http://forwarn.forestthreats.org" class="link">forwarn.forestthreats.org</a>
+        <a href="http://forwarn.forestthreats.org/fcav/assets/disclaimer.htm" target="_blank" class="link">Data Dislaimer</a>
+        <a href="http://forwarn.forestthreats.org/fcav/assets/FCAV_Users_Guide_4.2.2012.pdf" target="_blank" class="link">FCAV Users Guide</a>
+	<a id="kitty" href="http://forwarn.forestthreats.org/fcav/assets/ForestChangeProductsDescriptions.pdf" target="_blank">Change Product Descriptions</a>
       </div>
       <div id="latLonTracker"></div>
     </div>
@@ -115,7 +115,7 @@
     <div title="Map Layers" id="layerPickerDialog"></div>
 
     <div title="Map Tools" id="mapToolsDialog">
-      <div id="mapToolsAccordion" style="height:400px;">
+      <div id="mapToolsAccordion">
         <h3><a href="#maskAccordion">Masks</a></h3>
         <div id="masks">
           <input class="mask-toggle" type="checkbox" name="DeciduousForest" id="DeciduousForest" value="MaskForDeciduousForest"/><label for="DeciduousForest">Show Only: Deciduous Forest</label><br/>
