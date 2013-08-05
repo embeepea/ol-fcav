@@ -1,6 +1,9 @@
 @charset "utf-8";
 /* CSS Document */
 
+/*
+Global Styles
+*/
 * html .gainlayout {
     height: 1%;
 }
@@ -10,7 +13,20 @@ body, td, th {
     color: #222;
     font-size: 11pt;
     padding: 0px;
-    margin: 0px;    
+    margin: 0px;
+}
+
+/*
+Header Styles
+*/
+#titleBar {
+    position: relative;
+    border-bottom: #666 thin solid;
+    z-index: 1999;
+    width: 100%;
+    border: 0px;
+    padding: 0px;
+    margin: 0px;
 }
 
 h2 {
@@ -22,16 +38,6 @@ h2 {
     font-size: 1.25em;
 }
 
-#titleBar {
-    position: relative;
-    border-bottom: #666 thin solid;
-    z-index: 1999;
-    width: 100%;
-    border: 0px;
-    padding: 0px;
-    margin: 0px;
-}   
-
 #header {
     position: relative;
     border-bottom: #666 thin solid;
@@ -42,10 +48,9 @@ h2 {
     margin: 0px;
 }
 
-#btntgllyrpick, #btnhelp, #btntgllegend {
-    display: inline;
-}
-
+/*
+Map Styles
+*/
 #map {
     border: 1px solid black;
     position: absolute;
@@ -56,11 +61,9 @@ h2 {
     z-index: 0;
 }
 
-.leftbuttons {
-    text-align: left;
-    width: 20%;
-}
-
+/*
+Footer Styles
+*/
 #footer {
     position: absolute;
     border-bottom: #666 thin solid;
@@ -69,14 +72,25 @@ h2 {
     width: 100%;
 }
 
+/*
+Other Popup Styles
+*/
+#identify_results, td {
+    border-collapse: collapse;
+//	border: .05em solid #C0C0C0;
+}
+
+/*
+Deprecated and should be removed
+*/
+.leftbuttons {
+    text-align: left;
+    width: 20%;
+}
+
 #customZoom {
     z-index: 1001;
     position: absolute;
     right: 100px;
     top: 100px;
-}
-
-#identify_results, td {
-    border-collapse: collapse; 
-//	border: .05em solid #C0C0C0; 
 }
