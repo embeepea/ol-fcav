@@ -29,6 +29,7 @@ Header Styles
 }
 
 h2 {
+    padding-bottom: 3px;
     margin: 0 auto 0 auto;
     color: #e6e4d8;
     font-size: 1.25em;
@@ -39,25 +40,27 @@ h2 {
 
 #header {
     position: relative;
-    z-index: 2000;
-    width: 100%;
     padding: 0;
+    padding-left: 3px;
     border: 0;
     border-bottom: #666 thin solid;
     margin: 0;
+}
+
+#txtFindArea {
+    padding-top: 3px;
 }
 
 /*
 Map Styles
 */
 #map {
-    position: absolute;
-    z-index: 0;
     bottom: 0px;
     top: 0px;
     left: 0px;
-    right: 0px;
-    border: 1px solid black;
+    right: 0px;    
+    padding-top: 55px !important;
+    padding-bottom: 13px !important;
 }
 
 /*
