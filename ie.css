@@ -47,6 +47,10 @@ h2 {
     margin: 0;
 }
 
+.btn-large {
+    width: 31px;
+}
+
 #txtFindArea {
     padding-top: 3px;
 }
