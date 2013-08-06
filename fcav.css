@@ -339,43 +339,49 @@ jQuery element Styles
 Phone Portrait
 */
 @media (max-width: 480px) {
+    #btnPan,
+    #btnZoomIn,
+    #btnZoomOut,
+    #btnPrev,
+    #btnNext,
+    #latLonTracker,
+    .olControlScaleBar,
+    .olControlPanZoomBar {
+        display: none;
+    }
+
     #header {
-        text-align: center;
         padding-bottom: 1px;
-/*
-        overflow-x: -webkit-marquee;
-        -webkit-marquee-direction: backwards;
-        -webkit-marquee-style: slide;
-        -webkit-marquee-speed: fast;
-        -webkit-marquee-increment: large;
-        -webkit-marquee-repetition: 10000;
-*/
+        text-align: center;
     }
 
     .btn-large {
         width: auto;
     }
 
-    #btnPan, #btnZoomIn, #btnZoomOut, #btnPrev, #btnNext, #latLonTracker, .olControlScaleBar, .olControlPanZoomBar {
-        display: none;
-    }
-    #footer {
-        font-size: 5.6pt;
-    }
-    #links {
-        float: none;
-    }
-    .link {
-        padding-right: 2px;
-    }
     #map {
         padding-bottom: 12px !important;
     }
+
+    #footer {
+        font-size: 5.6pt;
+    }
+
+    #links {
+        float: none;
+    }
+
+    .link {
+        padding-right: 2px;
+    }
+
     #titlebar h2 {
         font-size: 1em;
         background: #f00;
     }
-    #baseCombo, #themeCombo {
+
+    #baseCombo,
+    #themeCombo {
         width: 85px;
         margin-left: 2px;
         margin-right: 2px;
@@ -389,28 +395,40 @@ Phone Landscape
     h2 {
         background: #0f0;
     }
+
+    #btnPan,
+    #btnZoomIn,
+    #btnZoomOut,
+    #btnPrev,
+    #btnNext,
+    #latLonTracker,
+    .olControlScaleBar,
+    .olControlPanZoomBar {
+        display: none;
+    }
+
+    #header {
+        padding-bottom: 1px;
+        text-align: center;
+    }
+
     .btn-large {
         width: auto;
     }
-    #btnPan, #btnZoomIn, #btnZoomOut, #btnPrev, #btnNext, #latLonTracker, .olControlScaleBar, .olControlPanZoomBar {
-        display: none;
-    }
-    #header {
-        text-align: center;
-        padding-bottom: 1px;
-    }
-    #footer {
-        font-size: 6pt;
-    }
-    .link {
-        padding-right: 2px;
-    }
+
     #themeCombo {
         width: 200px;
         margin-left: 2px;
         margin-right: 2px;
     }
-    
+
+    #footer {
+        font-size: 6pt;
+    }
+
+    .link {
+        padding-right: 2px;
+    }
 }
 
 /*
@@ -420,11 +438,14 @@ Tablet Portrait
     h2 {
         background: #ff0;
     }
+
+    #latLonTracker,
+    .olControlPanZoomBar {
+        display: none;
+    }
+
     #header {
         padding-bottom: 1px;
-    }
-    #latLonTracker, .olControlPanZoomBar {
-        display: none;
     }
 }
 
@@ -435,10 +456,13 @@ Tablet Landscape
     h2 {
         background: #00f;
     }
+
     #header {
         padding-bottom: 1px;
     }
-    #baseCombo, #themeCombo {
+
+    #baseCombo,
+    #themeCombo {
         width: 85px;
         margin-left: 2px;
         margin-right: 2px;
@@ -446,7 +470,7 @@ Tablet Landscape
 }
 
 /*
-Browser
+Narrow Browser
 */
 @media (min-width: 1121px) and (max-width: 1180px) {
     #themeCombo {
