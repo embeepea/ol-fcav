@@ -339,12 +339,7 @@ jQuery element Styles
 Phone Portrait
 */
 @media (max-width: 480px) {
-    #btnPan,
-    #btnZoomIn,
-    #btnZoomOut,
-    #btnPrev,
-    #btnNext,
-    #latLonTracker,
+    .hidden-phone-portrait,
     .olControlScaleBar,
     .olControlPanZoomBar {
         display: none;
@@ -396,12 +391,7 @@ Phone Landscape
         background: #0f0;
     }
 
-    #btnPan,
-    #btnZoomIn,
-    #btnZoomOut,
-    #btnPrev,
-    #btnNext,
-    #latLonTracker,
+    .hidden-phone-landscape,
     .olControlScaleBar,
     .olControlPanZoomBar {
         display: none;
@@ -439,7 +429,7 @@ Tablet Portrait
         background: #ff0;
     }
 
-    #latLonTracker,
+    .hidden-tablet-portait,
     .olControlPanZoomBar {
         display: none;
     }
