@@ -334,3 +334,79 @@ jQuery element Styles
     width: 16px;
     height: 16px;
 }
+
+/*iPhone*/
+/*@media only screen and (max-device-width: 480px) {*/
+@media (max-width: 480px) {
+    #header {
+/*
+        overflow-x: -webkit-marquee;
+        -webkit-marquee-direction: backwards;
+        -webkit-marquee-style: slide;
+        -webkit-marquee-speed: fast;
+        -webkit-marquee-increment: large;
+        -webkit-marquee-repetition: 10000;
+*/
+    }
+    #btnPan, #btnZoomIn, #btnZoomOut, #btnPrev, #btnNext, #latLonTracker, .olControlScaleBar, .olControlPanZoomBar {
+        display: none;
+    }
+    #footer {
+        font-size: 7pt;
+    }
+    #links {
+        float: none;
+    }
+    #map {
+        padding-bottom: 15px !important;
+    }
+    h2 {
+        background: #f00;
+    }
+    #themeCombo {
+        width: 70px;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    h2 {
+        background: #0f0;
+    }
+    
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+    h2 {
+        background: #00f;
+    }
+    
+}
+/*iPad*/
+/*@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {*/
+/*
+@media (min-device-width: 768px) and (max-device-width: 1024px) {
+    html {
+        background-color: #f9f2e3;
+        padding: 12px;
+    }
+    #be, #te, #le, #re {
+        display: none;
+    }
+    body {
+        margin: 0;
+        padding: 66px 24px 24px 24px;
+    }
+    .page {
+        margin: 0;
+    }
+    a, .posted b {
+        font-weight: normal!important;
+    }
+    h1 {
+        color: #ccc;
+    }
+    footer {
+        clear: both;
+        position: static;
+    }
+}
+*/
