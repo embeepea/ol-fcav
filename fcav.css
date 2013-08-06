@@ -55,7 +55,7 @@ Header Styles
     display: block;
     height: auto;
     padding-left: 3px;
-    box-shadow: 3px 1px 5px #333;
+    box-shadow: 0px 1px 2px #333;
     background: #dfddd0;
 }
 
@@ -335,10 +335,13 @@ jQuery element Styles
     height: 16px;
 }
 
-/*iPhone*/
-/*@media only screen and (max-device-width: 480px) {*/
+/*
+Phone Portrait
+*/
 @media (max-width: 480px) {
     #header {
+        text-align: center;
+        padding-bottom: 1px;
 /*
         overflow-x: -webkit-marquee;
         -webkit-marquee-direction: backwards;
@@ -348,65 +351,107 @@ jQuery element Styles
         -webkit-marquee-repetition: 10000;
 */
     }
+
+    .btn-large {
+        width: auto;
+    }
+
     #btnPan, #btnZoomIn, #btnZoomOut, #btnPrev, #btnNext, #latLonTracker, .olControlScaleBar, .olControlPanZoomBar {
         display: none;
     }
     #footer {
-        font-size: 7pt;
+        font-size: 5.6pt;
     }
     #links {
         float: none;
     }
-    #map {
-        padding-bottom: 15px !important;
+    .link {
+        padding-right: 2px;
     }
-    h2 {
+    #map {
+        padding-bottom: 12px !important;
+    }
+    #titlebar h2 {
+        font-size: 1em;
         background: #f00;
     }
-    #themeCombo {
-        width: 70px;
+    #baseCombo, #themeCombo {
+        width: 85px;
+        margin-left: 2px;
+        margin-right: 2px;
     }
 }
 
-@media (min-width: 481px) and (max-width: 768px) {
+/*
+Phone Landscape
+*/
+@media (min-width: 481px) and (max-width: 650px) {
     h2 {
         background: #0f0;
     }
+    .btn-large {
+        width: auto;
+    }
+    #btnPan, #btnZoomIn, #btnZoomOut, #btnPrev, #btnNext, #latLonTracker, .olControlScaleBar, .olControlPanZoomBar {
+        display: none;
+    }
+    #header {
+        text-align: center;
+        padding-bottom: 1px;
+    }
+    #footer {
+        font-size: 6pt;
+    }
+    .link {
+        padding-right: 2px;
+    }
+    #themeCombo {
+        width: 200px;
+        margin-left: 2px;
+        margin-right: 2px;
+    }
     
 }
-@media (min-width: 769px) and (max-width: 1024px) {
+
+/*
+Tablet Portrait
+*/
+@media (min-width: 651px) and (max-width: 768px) {
+    h2 {
+        background: #ff0;
+    }
+    #header {
+        padding-bottom: 1px;
+    }
+    #latLonTracker, .olControlPanZoomBar {
+        display: none;
+    }
+}
+
+/*
+Tablet Landscape
+*/
+@media (min-width: 769px) and (max-width: 1120px) {
     h2 {
         background: #00f;
     }
-    
+    #header {
+        padding-bottom: 1px;
+    }
+    #baseCombo, #themeCombo {
+        width: 85px;
+        margin-left: 2px;
+        margin-right: 2px;
+    }
 }
-/*iPad*/
-/*@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {*/
+
 /*
-@media (min-device-width: 768px) and (max-device-width: 1024px) {
-    html {
-        background-color: #f9f2e3;
-        padding: 12px;
-    }
-    #be, #te, #le, #re {
-        display: none;
-    }
-    body {
-        margin: 0;
-        padding: 66px 24px 24px 24px;
-    }
-    .page {
-        margin: 0;
-    }
-    a, .posted b {
-        font-weight: normal!important;
-    }
-    h1 {
-        color: #ccc;
-    }
-    footer {
-        clear: both;
-        position: static;
+Browser
+*/
+@media (min-width: 1121px) and (max-width: 1180px) {
+    #themeCombo {
+        width: 260px;
+        margin-left: 2px;
+        margin-right: 2px;
     }
 }
-*/
