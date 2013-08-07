@@ -414,6 +414,10 @@ Phone Landscape
         width: 200px;
     }
 
+    #map {
+        padding-bottom: 10px !important;
+    }
+
     #footer {
         font-size: 6pt;
     }
