@@ -59,6 +59,17 @@ Header Styles
     background: #dfddd0;
 }
 
+.icon-active {
+    background-color: #000;
+    opacity: .75;
+}
+
+.icon:hover,
+.icon-active:hover {
+    background-color: #000;
+    opacity: .4;
+}
+
 .header-bar {
     display: inline-block;
 }
