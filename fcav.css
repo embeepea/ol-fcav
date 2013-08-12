@@ -1,0 +1,45 @@
+/*
+Custom overrides for Seldon.css.
+*/
+
+/*
+Global Styles
+*/
+body, td, th {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11pt;
+    color: #222;
+}
+
+a {
+    color: #000000;
+    text-decoration: none;
+}
+
+/*
+Header Styles
+*/
+#titleBar {
+    background: #665f45;
+    font-family: Verdana, Geneva, sans-serif;
+}
+
+#titlebar h2 {
+    color: #e6e4d8;
+    font-size: 1.25em;
+    font-weight: bold;
+    font-style: italic;
+    letter-spacing: -1px;
+}
+
+#header {
+    background: #dfddd0;
+}
+
+/*
+Footer Styles
+*/
+#footer {
+    background: #dfddd0;
+}
+
