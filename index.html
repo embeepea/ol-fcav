@@ -1,10 +1,11 @@
+<!--<!DOCTYPE html>-->
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <!-- test change test the order of these does matter -->
-    <title>Forest Change Assessment Viewer (OpenLayers Version)</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=8" >
+    <title>Forest Change Assessment Viewer</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=8" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta name="description" content="Monitor forest disturbances in the conterminous United States with this interactive map viewer. New forest change products are delivered every eight days."/>
 
     <script type="text/javascript" src="libs/seldon/libs/multigraph/multigraph-min-4.1.js"></script>
     <script type="text/javascript">$ = window.multigraph.jQuery;</script>
@@ -14,6 +15,8 @@
       fixJQueryAjaxTransport(jQuery);
     </script>
     <script type="text/javascript" src="libs/seldon/libs/OpenLayers212/OpenLayersBuild.js"></script>
+
+    <link type="text/css" rel="stylesheet" href="libs/seldon/reset.css"/>
 
     <link type="text/css" rel="stylesheet"
           href="libs/seldon/libs/jquery-ui/smoothness/jquery-ui-1.10.1.custom/css/smoothness/jquery-ui-1.10.1.custom.min.css"/>
@@ -28,135 +31,109 @@
     <script type="text/javascript" src="areas.js"></script>
     <script type="text/javascript" src="libs/seldon/seldon.js"></script>
 
+    <link rel="stylesheet" type="text/css" href="libs/seldon/seldon.css" />
     <link rel="stylesheet" type="text/css" href="fcav.css" />
 
     <script type="text/javascript">
       $('document').ready(function() {
-          fcav.init("config/ews_config.xml","EPSG:900913");
-		  //fcav.init("http://wms.forwarn.forestthreats.org/view/config/ews_config.xml","EPSG:900913");
+          seldon.init("config/ews_config.xml","EPSG:900913");
+                  //seldon.init("http://wms.forwarn.forestthreats.org/view/config/ews_config.xml","EPSG:900913");
       });
     </script>
 
     <!--[if IE]>
-        <link rel="stylesheet" type="text/css" href="ie.css" />
+        <link rel="stylesheet" type="text/css" href="libs/seldon/seldon-ie.css" />
     <![endif]-->
 
   </head>
 
   <body>
 
-    <table width="100%" height="100%" class="nonselectable">
-      <tr><td>
-          <div id="titleBar">
-            <h2>Forest Change Assessment Viewer (OpenLayers Version)</h2>
-          </div>
-      </td></tr>
+    <div id="titleBar">
+      <h2>Forest Change Assessment Viewer</h2>
+    </div>
 
-      <tr><td>
-          <div id="header">
-            <table width="100%" border="0">
-              <tr>
-                <td align="left">
-                  <div id='btnTglLyrPick' style="width:35px;display:inline-block;">
-                    <img id="tglLyrPickPic" src='icons/layers.png'/>
-                  </div>        
-  				  <div id='btnTglMapTools' style="width:35px;display:inline-block;">
-					<img id="tglLegendPic" src='icons/legend.png'/>
-				  </div> 
-				  <div id='btnAbout' style="width:35px;display:inline-block;">
-                    <img id="aboutPic" src='icons/about.png'/>
-                  </div>
-                </td>
-	            <td align="center">
-	              <div id='btnPan' style="display:inline-block;">
-	                <img id="panPic" src='icons/pan.png'/>
-	              </div>
-	              <div id='btnZoomIn' style="display:inline-block;">
-	                <img id="zoomInPic" src='icons/zoom-in.png'/>
-	              </div>
-	              <div id='btnZoomOut' style="display:inline-block;">
-	                <img id="zoomOutPic" src='icons/zoom-out.png'/>
-	              </div>
-	              <div id='btnID' style="display:inline-block;">
-	                <img id="idPic" src='icons/map-info.png'/>
-	              </div>
-	              <div id='btnZoomExtent' style="display:inline-block;">
-	                <img id="zoomExtentPic" src='icons/zoom-extent.png'/>
-	              </div>
-	              <div id='btnMultiGraph' style="display:inline-block;">
-	                <img id="multiGraphPic" src='icons/multigraph.png'/>
-	              </div>  
-                  <div id='btnPrev' style="width:23px;display:inline-block;">
-                    <img id="prevPic" title="Previous Extent" src='icons/prev.png'/>
-                  </div>
-                  <div id='btnNext' style="width:23px;display:inline-block;">
-                    <img id="nextPic" title="Next Extent" src='icons/next.png'/>
-                  </div>
-				  <div id='mapBase' style="display:inline-block;vertical-align:top;">
-                    <b>Base Map:</b><select id="baseCombo"></select>
-	              </div>
-	              <div id='mapTheme' style="display:inline-block;vertical-align:top;">
-	                <b>Theme:</b> <select id="themeCombo"></select>
-	              </div>
-                  <div id='txtFindArea' class="ui-widget" style="display:inline-block;vertical-align:top;">
-					  Find Area:<input id="findArea" />
-                  </div>                
-				</td>
-	          </tr>
-            </table>           
-          </div>
-      </td></tr>
+    <div id="header">
 
-      <tr height="100%"><td>
-          <div title="Map Layers" id="layerPickerDialog">
-          </div>    
+      <div class="header-bar">
+        <div id="btnTglLyrPick" class="btn-large header-bar">
+          <img id="tglLyrPickPic" src="icons/layers.png" class="icon" title="Toggle Map Layers"/>
+        </div>
+        <div id="btnTglMapTools" class="btn-large header-bar">
+          <img id="tglLegendPic" src="icons/legend.png" class="icon" title="Toggle Map Tools"/>
+        </div>
+        <div id="btnAbout" class="btn-large header-bar">
+          <img id="aboutPic" src="icons/about.png" class="icon" title="About"/>
+        </div>
+      </div>
 
-          <div title="Map Tools" id="mapToolsDialog">
-            <div id="mapToolsAccordion" style="height:400px;">
-                <h3><a href="#maskAccordion">Masks</a></h3>
-                <div id="masks">
-                    <table>
-                        <tr>
-                            <td><input class="mask-toggle" type="checkbox" name="DeciduousForest" id="DeciduousForest" value="MaskForDeciduousForest">Show Only: Deciduous Forest</td>
-                        </tr>
-                        <tr>
-                            <td><input class="mask-toggle" type="checkbox" name="ConiferForest" id="ConiferForest" value="MaskForConiferForest">Show Only: Conifer Forest</td>
-                        </tr>
-                        <tr>
-                            <td><input class="mask-toggle" type="checkbox" name="MixedForest" id="MixedForest" value="MaskForMixedForest">Show Only: Mixed Forest</td>
-                        </tr>
-                        <tr>
-                            <td><input class="mask-toggle" type="checkbox" name="EarlyNon-Forest" id="EarlyNon-Forest" value="MaskForEarlyNon-Forest">Show Only: Early Non-Forest</td>
-                        </tr>                        
-                    </table>
-                </div>
-                <h3><a href="#shareMapAccordion">Share this Map</a></h3>
-                <div><textarea class="shareMapUrl" readonly="true"></textarea></div>
-                <h3><a href="#legendAccordion">Legend (click to clear layer)</a></h3>
-                <div id="legend"></div>
-            </div> 
-          </div>
+      <div id="btn-small-group" class="header-bar">
+        <div id="btnPan" class="header-bar">
+          <img id="panPic" src="icons/pan.png" class="icon" title="Pan"/>
+        </div>
+        <div id="btnZoomIn" class="header-bar hidden-phone-portrait hidden-phone-landscape">
+          <img id="zoomInPic" src="icons/zoom-in.png" class="icon" title="Zoom In"/>
+        </div>
+        <div id="btnZoomOut" class="header-bar hidden-phone-portrait hidden-phone-landscape">
+          <img id="zoomOutPic" src="icons/zoom-out.png" class="icon" title="Zoom Out"/>
+        </div>
+        <div id="btnID" class="header-bar">
+          <img id="idPic" src="icons/map-info.png" class="icon" title="Identify"/>
+        </div>
+        <div id="btnZoomExtent" class="header-bar">
+          <img id="zoomExtentPic" src="icons/zoom-extent.png" class="icon" title="Full Extent"/>
+        </div>
+        <div id="btnMultiGraph" class="header-bar">
+          <img id="multiGraphPic" src="icons/multigraph.png" class="icon" title="Graph NDVI"/>
+        </div>
+        <div id="btnPrev" class="header-bar hidden-phone-portrait hidden-phone-landscape">
+          <img id="prevPic" src="icons/prev.png" class="icon" title="Previous Extent"/>
+        </div>
+        <div id="btnNext" class="header-bar hidden-phone-portrait hidden-phone-landscape">
+          <img id="nextPic" src="icons/next.png" class="icon" title="Next Extent"/>
+        </div>
+      </div>
+      <div id="mapBase" class="header-bar input input-select">
+        <strong>Base Map:</strong><select id="baseCombo"></select>
+      </div>
+      <div id="mapTheme" class="header-bar input input-select">
+        <strong>Theme:</strong><select id="themeCombo"></select>
+      </div>
+      <div id="txtFindArea" class="ui-widget" class="header-bar input">
+        <strong id="findAreaLabel">Find Area:</strong><input id="findArea"/>
+      </div>
+    </div>
 
-          <div id="map">
-            <!--<div id="customZoom">
-                <a href="#customZoomIn" id="customZoomIn">+</a>
-                <a href="#customZoomOut" id="customZoomOut">&#8722;</a>
-            </div>-->           
-          </div>
+    <div id="map"></div>
 
-      </td></tr>
-      <tr><td>
-          <div id="footer">      
-                <div id="links">
-                    <a href="http://forwarn.forestthreats.org">forwarn.forestthreats.org </a>| 
-                    <a href="http://forwarn.forestthreats.org/fcav/assets/disclaimer.htm" target="_blank">Data Dislaimer </a>| 
-                    <a href="http://forwarn.forestthreats.org/fcav/assets/FCAV_Users_Guide_4.2.2012.pdf" target="_blank">FCAV Users Guide </a>|
-					<a href="http://forwarn.forestthreats.org/fcav/assets/ForestChangeProductsDescriptions.pdf" target="_blank">Change Product Descriptions </a>
-                </div>
-                <div id="latLonTracker"></div>
-          </div>
-      </td></tr>
-    </table>
+    <div id="footer">
+      <div id="links">
+        <a href="http://forwarn.forestthreats.org" class="link">forwarn.forestthreats.org</a>
+        <a href="http://forwarn.forestthreats.org/fcav/assets/disclaimer.htm" target="_blank" class="link">Data Dislaimer</a>
+        <a href="http://forwarn.forestthreats.org/fcav/assets/FCAV_Users_Guide_4.2.2012.pdf" target="_blank" class="link">FCAV Users Guide</a>
+        <a id="kitty" href="http://forwarn.forestthreats.org/fcav/assets/ForestChangeProductsDescriptions.pdf" target="_blank">Change Product Descriptions</a>
+      </div>
+      <div id="latLonTracker" class="hidden-phone-portrait hidden-phone-landscape hidden-tablet-portrait"></div>
+    </div>
+
+    <div title="Map Layers" id="layerPickerDialog"></div>
+
+    <div title="Map Tools" id="mapToolsDialog">
+      <div id="mapToolsAccordion">
+        <h3><a href="#maskAccordion">Masks</a></h3>
+        <div id="masks">
+          <input class="mask-toggle" type="checkbox" name="DeciduousForest" id="DeciduousForest" value="MaskForDeciduousForest"/><label for="DeciduousForest">Show Only: Deciduous Forest</label><br/>
+          <input class="mask-toggle" type="checkbox" name="ConiferForest" id="ConiferForest" value="MaskForConiferForest"/><label for="ConiferForest">Show Only: Conifer Forest</label><br/>
+          <input class="mask-toggle" type="checkbox" name="MixedForest" id="MixedForest" value="MaskForMixedForest"/><label for="MixedForest">Show Only: Mixed Forest</label><br/>
+          <input class="mask-toggle" type="checkbox" name="EarlyNon-Forest" id="EarlyNon-Forest" value="MaskForEarlyNon-Forest"/><label for="EarlyNon-Forest">Show Only: Early Non-Forest</label>
+        </div>
+        <h3><a href="#shareMapAccordion">Share this Map</a></h3>
+        <div><textarea class="shareMapUrl" readonly="true"></textarea></div>
+        <h3><a href="#legendAccordion">Legend (click to clear layer)</a></h3>
+        <div id="legend"></div>
+      </div>
+    </div>
+
     <div id="propertyDialogsContainer"></div>
     <div id="splashScreenContent"></div>
     <div id="splashScreenContainer"></div>
