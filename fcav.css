@@ -43,3 +43,24 @@ Footer Styles
     background: #dfddd0;
 }
 
+/*
+Phone Portrait
+*/
+@media (max-width: 480px) {
+    #titlebar h2 {
+        font-size: 1em;
+    }
+
+    #footer {
+        font-size: 5.6pt;
+    }
+}
+
+/*
+Phone Landscape
+*/
+@media (min-width: 481px) and (max-width: 650px) {
+    #footer {
+        font-size: 6pt;
+    }
+}
