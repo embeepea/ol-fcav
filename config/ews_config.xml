@@ -3001,6 +3001,42 @@
           legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"
           mask="true"/>	
 
+        <wmsLayer
+          lid="NRTAPD"
+          visible="false"
+          url="http://rain.nemac.org/~derek/fswms/html/ews1year?TRANSPARENT=true"
+          srs="EPSG:3785"
+          layers="EFETAC-NASA_1Year_20130929"
+          name="20130929"
+          styles="default" 
+          identify="true"
+          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"
+          mask="true"/>	
+
+        <wmsLayer
+          lid="NRTAPM"
+          visible="false"
+          url="http://rain.nemac.org/~derek/fswms/html/ews1year?TRANSPARENT=true"
+          srs="EPSG:3785"
+          layers="EFETAC-NASA_1Year_20131007"
+          name="20131007"
+          styles="default" 
+          identify="true"
+          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"
+          mask="true"/>	
+
+        <wmsLayer
+          lid="NRTAPN"
+          visible="false"
+          url="http://rain.nemac.org/~derek/fswms/html/ews1year?TRANSPARENT=true"
+          srs="EPSG:3785"
+          layers="EFETAC-NASA_1Year_20131015"
+          name="20131015"
+          styles="default" 
+          identify="true"
+          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"
+          mask="true"/>	
+
     </wmsSubgroup>
     <wmsSubgroup label="Archived MODIS NRT 3-Year Baseline (TACs-NASA)">
     
@@ -5008,6 +5044,42 @@
           legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"
           mask="true"/>	
 
+        <wmsLayer
+          lid="NRTAPE"
+          visible="false"
+          url="http://rain.nemac.org/~derek/fswms/html/ews3year?TRANSPARENT=true"
+          srs="EPSG:3785"
+          layers="EFETAC-NASA_3Year_20130929"
+          name="20130929"
+          styles="default" 
+          identify="true"
+          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"
+          mask="true"/>	
+
+        <wmsLayer
+          lid="NRTAPO"
+          visible="false"
+          url="http://rain.nemac.org/~derek/fswms/html/ews3year?TRANSPARENT=true"
+          srs="EPSG:3785"
+          layers="EFETAC-NASA_3Year_20131007"
+          name="20131007"
+          styles="default" 
+          identify="true"
+          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"
+          mask="true"/>	
+
+        <wmsLayer
+          lid="NRTAPQ"
+          visible="false"
+          url="http://rain.nemac.org/~derek/fswms/html/ews3year?TRANSPARENT=true"
+          srs="EPSG:3785"
+          layers="EFETAC-NASA_3Year_20131015"
+          name="20131015"
+          styles="default" 
+          identify="true"
+          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"
+          mask="true"/>	
+
     </wmsSubgroup>
     <wmsSubgroup label="Archived NRT All-Year Baseline (TACs-NASA)">
     
@@ -6727,6 +6799,42 @@
           legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"
           mask="true"/>	
 
+        <wmsLayer
+          lid="NRTAPG"
+          visible="false"
+          url="http://rain.nemac.org/~derek/fswms/html/ews?TRANSPARENT=true"
+          srs="EPSG:3785"
+          layers="EFETAC-NASA_20130929"
+          name="20130929"
+          styles="default" 
+          identify="true"
+          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"
+          mask="true"/>	
+
+        <wmsLayer
+          lid="NRTAPS"
+          visible="false"
+          url="http://rain.nemac.org/~derek/fswms/html/ews?TRANSPARENT=true"
+          srs="EPSG:3785"
+          layers="EFETAC-NASA_20131007"
+          name="20131007"
+          styles="default" 
+          identify="true"
+          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"
+          mask="true"/>	
+
+        <wmsLayer
+          lid="NRTAPT"
+          visible="false"
+          url="http://rain.nemac.org/~derek/fswms/html/ews?TRANSPARENT=true"
+          srs="EPSG:3785"
+          layers="EFETAC-NASA_20131015"
+          name="20131015"
+          styles="default" 
+          identify="true"
+          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"
+          mask="true"/>	
+
     </wmsSubgroup>
     <wmsSubgroup label="Archived Early Detect (ALC) Change from previous year">
     
@@ -7121,6 +7229,42 @@
           srs="EPSG:3785"
           layers="EFETAC-NASA_ALC1YR_20130921"
           name="20130921"
+          styles="default" 
+          identify="true"
+          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"
+          mask="true"/>	
+
+        <wmsLayer
+          lid="NRTAPH"
+          visible="false"
+          url="http://rain.nemac.org/~derek/fswms/html/ews1year?TRANSPARENT=true"
+          srs="EPSG:3785"
+          layers="EFETAC-NASA_ALC1YR_20130929"
+          name="20130929"
+          styles="default" 
+          identify="true"
+          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"
+          mask="true"/>	
+
+        <wmsLayer
+          lid="NRTAPU"
+          visible="false"
+          url="http://rain.nemac.org/~derek/fswms/html/ews1year?TRANSPARENT=true"
+          srs="EPSG:3785"
+          layers="EFETAC-NASA_ALC1YR_20131007"
+          name="20131007"
+          styles="default" 
+          identify="true"
+          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"
+          mask="true"/>	
+
+        <wmsLayer
+          lid="NRTAPV"
+          visible="false"
+          url="http://rain.nemac.org/~derek/fswms/html/ews1year?TRANSPARENT=true"
+          srs="EPSG:3785"
+          layers="EFETAC-NASA_ALC1YR_20131015"
+          name="20131015"
           styles="default" 
           identify="true"
           legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"
@@ -7525,6 +7669,42 @@
           legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"
           mask="true"/>	
 
+        <wmsLayer
+          lid="NRTAPI"
+          visible="false"
+          url="http://rain.nemac.org/~derek/fswms/html/ews?TRANSPARENT=true"
+          srs="EPSG:3785"
+          layers="EFETAC-NASA_MUCAllYear_20130929"
+          name="20130929"
+          styles="default" 
+          identify="true"
+          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"
+          mask="true"/>	
+
+        <wmsLayer
+          lid="NRTAPW"
+          visible="false"
+          url="http://rain.nemac.org/~derek/fswms/html/ews?TRANSPARENT=true"
+          srs="EPSG:3785"
+          layers="EFETAC-NASA_MUCAllYear_20131007"
+          name="20131007"
+          styles="default" 
+          identify="true"
+          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"
+          mask="true"/>	
+
+        <wmsLayer
+          lid="NRTAPX"
+          visible="false"
+          url="http://rain.nemac.org/~derek/fswms/html/ews?TRANSPARENT=true"
+          srs="EPSG:3785"
+          layers="EFETAC-NASA_MUCAllYear_20131015"
+          name="20131015"
+          styles="default" 
+          identify="true"
+          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"
+          mask="true"/>	
+
     </wmsSubgroup>
     <wmsSubgroup label="Archived Seasonally-Adjusted Change from All-Year mean of maximums (MMAX)">
     
@@ -7919,6 +8099,42 @@
           srs="EPSG:3785"
           layers="EFETAC-NASA_MoMAllYear_20130921"
           name="20130921"
+          styles="default" 
+          identify="true"
+          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"
+          mask="true"/>	
+
+        <wmsLayer
+          lid="NRTAPJ"
+          visible="false"
+          url="http://rain.nemac.org/~derek/fswms/html/ews?TRANSPARENT=true"
+          srs="EPSG:3785"
+          layers="EFETAC-NASA_MoMAllYear_20130929"
+          name="20130929"
+          styles="default" 
+          identify="true"
+          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"
+          mask="true"/>	
+
+        <wmsLayer
+          lid="NRTAPY"
+          visible="false"
+          url="http://rain.nemac.org/~derek/fswms/html/ews?TRANSPARENT=true"
+          srs="EPSG:3785"
+          layers="EFETAC-NASA_MoMAllYear_20131007"
+          name="20131007"
+          styles="default" 
+          identify="true"
+          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"
+          mask="true"/>	
+
+        <wmsLayer
+          lid="NRTAPZ"
+          visible="false"
+          url="http://rain.nemac.org/~derek/fswms/html/ews?TRANSPARENT=true"
+          srs="EPSG:3785"
+          layers="EFETAC-NASA_MoMAllYear_20131015"
+          name="20131015"
           styles="default" 
           identify="true"
           legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/TACs_NASA_CT_7-6-2011_clipped.png"
@@ -9898,6 +10114,42 @@
           legend="http://rain.nemac.org/~derek/fswms/html/"
           mask="false"/>	
 
+        <wmsLayer
+          lid="NRTAPC"
+          visible="false"
+          url="http://rain.nemac.org/~derek/fswms/html/ewstruecolor?TRANSPARENT=true"
+          srs="EPSG:3785"
+          layers="EFETAC-NASA_TC_20130929_24"
+          name="True Color 20130929_24"
+          styles="default" 
+          identify="true"
+          legend="http://rain.nemac.org/~derek/fswms/html/"
+          mask="false"/>	
+
+        <wmsLayer
+          lid="NRTAPK"
+          visible="false"
+          url="http://rain.nemac.org/~derek/fswms/html/ewstruecolor?TRANSPARENT=true"
+          srs="EPSG:3785"
+          layers="EFETAC-NASA_TC_20131007_24"
+          name="True Color 20131007_24"
+          styles="default" 
+          identify="true"
+          legend="http://rain.nemac.org/~derek/fswms/html/"
+          mask="false"/>	
+
+        <wmsLayer
+          lid="NRTAPL"
+          visible="false"
+          url="http://rain.nemac.org/~derek/fswms/html/ewstruecolor?TRANSPARENT=true"
+          srs="EPSG:3785"
+          layers="EFETAC-NASA_TC_20131015_24"
+          name="True Color 20131015_24"
+          styles="default" 
+          identify="true"
+          legend="http://rain.nemac.org/~derek/fswms/html/"
+          mask="false"/>	
+
     </wmsSubgroup>
   </wmsGroup>
   <wmsGroup gid="G07" name="Archived_RSAC" label="Archived RSAC-FHTET Forest Change Disturbance">
@@ -10349,6 +10601,56 @@
            name="Current Drought Monitor" 
            legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/drought-monitor.png" />
         
+        <wmsLayer
+          lid="DRTJHE"
+          visible="false"
+          url="http://torka.unl.edu:8080/cgi-bin/mapserv.exe?map=/ms4w/apps/dm/service/usdm131029_wms.map&amp;TRANSPARENT=true" 
+          srs="EPSG:900913"
+          layers="usdm131029"
+          name="10/29/2013"
+          styles="default" 
+          identify="false"
+          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/drought-monitor.png"/>
+        <wmsLayer
+          lid="DRTJHD"
+          visible="false"
+          url="http://torka.unl.edu:8080/cgi-bin/mapserv.exe?map=/ms4w/apps/dm/service/usdm131022_wms.map&amp;TRANSPARENT=true" 
+          srs="EPSG:900913"
+          layers="usdm131022"
+          name="10/22/2013"
+          styles="default" 
+          identify="false"
+          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/drought-monitor.png"/>
+        <wmsLayer
+          lid="DRTJHC"
+          visible="false"
+          url="http://torka.unl.edu:8080/cgi-bin/mapserv.exe?map=/ms4w/apps/dm/service/usdm131015_wms.map&amp;TRANSPARENT=true" 
+          srs="EPSG:900913"
+          layers="usdm131015"
+          name="10/15/2013"
+          styles="default" 
+          identify="false"
+          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/drought-monitor.png"/>
+        <wmsLayer
+          lid="DRTJHB"
+          visible="false"
+          url="http://torka.unl.edu:8080/cgi-bin/mapserv.exe?map=/ms4w/apps/dm/service/usdm131008_wms.map&amp;TRANSPARENT=true" 
+          srs="EPSG:900913"
+          layers="usdm131008"
+          name="10/08/2013"
+          styles="default" 
+          identify="false"
+          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/drought-monitor.png"/>
+        <wmsLayer
+          lid="DRTJHA"
+          visible="false"
+          url="http://torka.unl.edu:8080/cgi-bin/mapserv.exe?map=/ms4w/apps/dm/service/usdm131001_wms.map&amp;TRANSPARENT=true" 
+          srs="EPSG:900913"
+          layers="usdm131001"
+          name="10/01/2013"
+          styles="default" 
+          identify="false"
+          legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/drought-monitor.png"/>
         <wmsLayer
           lid="DRTJGZ"
           visible="false"
@@ -18069,7 +18371,7 @@
 	 styles="default" 
 	 identify="true" 
 	 name="2012 Cropland Data Layer" 
-	 legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/CropLands.png"/>
+	 legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/CropLands12.png"/>
     </wmsSubgroup>
     <wmsSubgroup label="Elevation Products">
       <wmsLayer 
@@ -18197,7 +18499,7 @@
 	 styles="default" 
 	 identify="true" 
 	 name="Phenoregions 50 MaxMode" 
-	 legend=""
+	 legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/paintchips.phendump.2000-2011.50.1.png"
      mask="MaskForAgriculture,MaskForConiferForest,MaskForDeciduousForest,MaskForGrass,MaskForMixedForest,MaskForNonVegetated,MaskForShrubland,MaskForUrban"/>
       <wmsLayer 
 	 lid="PR100MM"
@@ -18208,7 +18510,7 @@
 	 styles="default" 
 	 identify="true" 
 	 name="Phenoregions 100 MaxMode" 
-	 legend=""
+	 legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/paintchips.phendump.2000-2011.100.1.png"
      mask="MaskForAgriculture,MaskForConiferForest,MaskForDeciduousForest,MaskForGrass,MaskForMixedForest,MaskForNonVegetated,MaskForShrubland,MaskForUrban"/>
       <wmsLayer 
 	 lid="PR200MM"
@@ -18219,7 +18521,7 @@
 	 styles="default" 
 	 identify="true" 
 	 name="Phenoregions 200 MaxMode" 
-	 legend=""
+	 legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/paintchips.phendump.2000-2011.200.1.png"
      mask="MaskForAgriculture,MaskForConiferForest,MaskForDeciduousForest,MaskForGrass,MaskForMixedForest,MaskForNonVegetated,MaskForShrubland,MaskForUrban"/>
       <wmsLayer 
 	 lid="PR500MM"
@@ -18230,7 +18532,7 @@
 	 styles="default" 
 	 identify="true" 
 	 name="Phenoregions 500 MaxMode" 
-	 legend=""
+	 legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/paintchips.phendump.2000-2011.500.1.png"
      mask="MaskForAgriculture,MaskForConiferForest,MaskForDeciduousForest,MaskForGrass,MaskForMixedForest,MaskForNonVegetated,MaskForShrubland,MaskForUrban"/>
       <wmsLayer 
 	 lid="PR1000MM"
@@ -18241,7 +18543,7 @@
 	 styles="default" 
 	 identify="true" 
 	 name="Phenoregions 1000 MaxMode" 
-	 legend=""
+	 legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/paintchips.phendump.2000-2011.1000.1.png"
      mask="MaskForAgriculture,MaskForConiferForest,MaskForDeciduousForest,MaskForGrass,MaskForMixedForest,MaskForNonVegetated,MaskForShrubland,MaskForUrban"/>
       <wmsLayer 
 	 lid="PR5000MM"
@@ -18252,7 +18554,7 @@
 	 styles="default" 
 	 identify="true" 
 	 name="Phenoregions 5000 MaxMode" 
-	 legend=""
+	 legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/paintchips.phendump.2000-2011.5000.1.png"
      mask="MaskForAgriculture,MaskForConiferForest,MaskForDeciduousForest,MaskForGrass,MaskForMixedForest,MaskForNonVegetated,MaskForShrubland,MaskForUrban"/>
 	</wmsSubgroup>
     <wmsSubgroup label="Landcover">
@@ -18286,6 +18588,16 @@
 	 identify="true" 
 	 name="Forest Biomass (USFS FIA-RSAC)" 
 	 legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/FIA-RSAC_Forest_Biomass.png"/>
+      <wmsLayer 
+	 lid="PMSC09"
+	 visible="false" 
+	 url="http://rain.nemac.org/~derek/fswms/html/rlayers?TRANSPARENT=true" 
+	 srs="EPSG:3785" 
+	 layers="Carbon09" 
+	 styles="default" 
+	 identify="true" 
+	 name="Carbon Stock 2009" 
+	 legend="http://rain.nemac.org/~derek/fswms/html/cmapicons/Carbon09.png"/>
       <wmsLayer 
 	 lid="BRI"
 	 visible="false" 
