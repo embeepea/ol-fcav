@@ -44,6 +44,28 @@ Footer Styles
 }
 
 /*
+Splash Screen Styles
+*/
+.splashScreenStyle {
+    opacity: 1 !important;
+    background: rgb(255, 255, 255);
+/*    background: rgba(255, 255, 255, 0.9);*/
+}
+
+.ui-dialog .ui-dialog-content {
+    padding: 0 !important;
+}
+
+.splash-screen-dialog {
+    font-size: 1em;
+    text-align: center;
+}
+
+.splash-screen-dialog a {
+    text-decoration: underline;
+}
+
+/*
 Phone Portrait
 */
 @media (max-width: 480px) {
