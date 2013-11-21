@@ -24,8 +24,8 @@ Header Styles
     font-family: Verdana, Geneva, sans-serif;
 }
 
-#titlebar h2 {
-    color: #e6e4d8;
+#titleBar h2 {
+    color: #fff;
     font-size: 1.25em;
     font-weight: bold;
     font-style: italic;
@@ -41,6 +41,30 @@ Footer Styles
 */
 #footer {
     background: #dfddd0;
+}
+
+/*
+jquery UI overrides
+*/
+.ui-dialog-titlebar,
+.ui-widget-header .ui-dialog-titlebar-close {
+    background: #dfddd0;
+}
+
+.ui-dialog-titlebar .ui-dialog-title {
+    font-size: 1em;
+}
+
+.ui-accordion .ui-accordion-header {
+    background: #f5f3e9;
+}
+
+.ui-accordion .ui-accordion-header-active {
+    background: #fff;
+}
+
+.ui-accordion .ui-accordion-content div h4 {
+    color: #665f45;
 }
 
 /*
@@ -69,7 +93,7 @@ Splash Screen Styles
 Phone Portrait
 */
 @media (max-width: 480px) {
-    #titlebar h2 {
+    #titleBar h2 {
         font-size: 1em;
     }
 
