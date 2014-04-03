@@ -30,6 +30,19 @@ Header Styles
     font-weight: bold;
     font-style: italic;
     letter-spacing: -1px;
+	display: inline;
+}
+
+#titleBar h3 {
+	display: inline;
+	margin-left: 10px;
+	color: #fff;
+	font-style: italic;
+	font-size: 1.0em;
+}
+
+#titleBar a:link {
+	color: #fff;
 }
 
 #header {
