@@ -102,14 +102,15 @@ try:
 	#3. Add title, date printed to background
 	draw = ImageDraw.Draw(background)
 	draw.text((20,(bg_h-img_h)/2-25), "U.S Forest Change Assessment Viewer", fill="black", font=fontBold)
-	draw.text((20,(bg_h-(bg_h-img_h)/2)), "Printed on: "+time.strftime("%m/%d/%Y"), fill="black", font=font)				
+	draw.text((20,(bg_h-(bg_h-img_h)/2)), "Printed on: "+time.strftime("%m/%d/%Y"), fill="black", font=font)	
+	fo.write("got here\n")	
 	background.save("printed_map.jpg")	
 	# new_im.save("printed_map.jpg")	
 	#8. Clean up after yourself:
 	dirPath = "print_temp"
-	fileList = os.listdir(dirPath)
-	for fileName in fileList:
-		os.remove(dirPath+"/"+fileName)	
+	# fileList = os.listdir(dirPath)
+	# for fileName in fileList:
+		# os.remove(dirPath+"/"+fileName)	
 except:
 	fo.write("error occured\n")
 	sys.exit(1)
