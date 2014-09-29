@@ -1,0 +1,31 @@
+{
+  "name": "fcav2",
+  "version": "0.0.0",
+  "description": "Forest Change Assessment Viewer",
+  "dependencies": {
+    "gulp": "~3.8.7",
+    "gulp-browserify": "~0.5.0",
+    "gulp-concat": "~2.2.0",
+    "gulp-filter": "~0.4.1",
+    "gulp-flatten": "~0.0.2",
+    "gulp-inject": "~0.4.1",
+    "gulp-minify-css": "~0.3.4",
+    "gulp-uglify": "~0.2.1",
+    "gulp-util": "~2.2.14",
+    "streamqueue": "~0.0.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nemac/ol-fcav.git"
+  },
+  "author": "NEMAC",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nemac/ol-fcav/issues"
+  },
+  "homepage": "http://forwarn.forestthreats.org"
+}
