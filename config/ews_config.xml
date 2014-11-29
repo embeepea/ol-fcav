@@ -32996,7 +32996,8 @@
     <tool name="Print" label="Print Map" />
     <tool name="Export" label="Export Map to JPG" />
     <tool name="Identify" label="Identify Features" linkFields=""/>
-    <tool name="Phenograph" label="Graph NDVI" helpText = "Click the map to see NDVI for the point. Or, enter coordinates and click Make Graph."/>
+    <tool name="Phenograph" label="Graph NDVI" helpText = "Click the map to see NDVI for the point. Or, enter coordinates and click Make Graph."
+          muglPrefix="http://fcav-ndvi.nemac.org/tsmugl_product.cgi?args=CONUS_NDVI,"/>
     <tool name="ShareMap" label="Share this Map" helpText = "Copy the URL below to share this map with someone else."/>
   </tools>
   <links>
