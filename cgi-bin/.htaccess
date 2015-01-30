@@ -1,0 +1,5 @@
+Options +ExecCGI
+<Files "print.cgi">
+    Allow from all
+    SetHandler cgi-script
+</Files>
