@@ -1,3 +1,11 @@
 #! /bin/bash
 
-gulp html
+THINGS_TO_COPY="\
+*.html \
+cgi-bin \
+libs \
+icons \
+*.css \
+"
+
+rsync --delete --exclude '**/.git*' --delete-excluded -av ${THINGS_TO_COPY} html/

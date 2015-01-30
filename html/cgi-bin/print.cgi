@@ -9,19 +9,16 @@
 ### To-do: make the temporary image file names based on date-time stamp and
 ### when script runs clean out any old ones (e.g. a day old)
 
-import cgi, simplejson, sys, urllib
-import Image, ImageChops, ImageDraw, ImageFont
-import os.path
-import time
+import cgi, simplejson, sys, urllib, os, time
+import PIL.Image, PIL.ImageChops, PIL.ImageDraw, PIL.ImageFont
 
 fontsize = 17  # starting font size
-font = ImageFont.truetype("fonts/arial.ttf", fontsize)
-fontBold = ImageFont.truetype("fonts/arialbd.ttf", fontsize)
+font = PIL.ImageFont.truetype("fonts/arial.ttf", fontsize)
+fontBold = PIL.ImageFont.truetype("fonts/arialbd.ttf", fontsize)
 
 # Open a file
-fo = open("print_log.txt", "wb")
+fo = open("print_temp/print_log.txt", "wb")
 fo.write( "Opening print log!!\n");
-
 params = cgi.FieldStorage()
 try:
 	settings = {}
@@ -33,6 +30,10 @@ try:
 	imgXList = [] 
 	imgYList = []
 	fo.write("got here\n")
+	#0. clean out print_temp from previous run:
+        for fileName in os.listdir("print_temp"):
+                if fileName != ".gitignore" and fileName != "legends":
+                        os.remove(os.path.join("print_temp", fileName))
 	#1. read in the x and y coordinates
 	for tile in settings['tiles']:
 		# fo.write(str(tile)+"\n")
@@ -47,8 +48,8 @@ try:
 	printCount = 0
 	imgX = 0 
 	imgY = 0
-	new_im = Image.new('RGB', (settings['width']+256,settings['height']+256))
-	background = Image.new('RGBA', (1440,900), (255, 255, 255, 255))
+	new_im = PIL.Image.new('RGB', (settings['width']+256,settings['height']+256))
+	background = PIL.Image.new('RGBA', (1440,900), (255, 255, 255, 255))
 	#4. Get all of the map tiles and assemble them accordingly
 	fo.write("width:"+str(settings['width']+256)+"height:"+str(settings['height']+256)+"\n")
 	for tile in settings['tiles']:
@@ -62,7 +63,7 @@ try:
 			if (str(key)=='y'):
 				imgY = str(val+abs(min(imgYList)))
 				fo.write("new y:"+str(imgY)+"\n")
-		im = Image.open('print_temp/'+str(printCount)+'.jpg')
+		im = PIL.Image.open('print_temp/'+str(printCount)+'.jpg')
 		fo.write("bbox:"+str(im.getbbox())+"\n")
 		# fo.write(str(im.getcolors())+"\n")
 		# fo.write(str(im.mode)+"\n")
@@ -77,21 +78,21 @@ try:
 		printCount = printCount+1	
 	#2. Download the legends and assemble them accordingly
 	legendCount = 0
-	legends_palette = Image.new('RGBA', (400,800), (255, 255, 255, 255))
+	legends_palette = PIL.Image.new('RGBA', (400,800), (255, 255, 255, 255))
 	legend_y = 0
 	for legend in settings['legends']:
 		fo.write("legend: "+str(legend)+"\n")	
 		for key, val in legend.iteritems():
 			if (str(key)=='url'):
 				urllib.urlretrieve(str(val), 'print_temp/legends/'+str(legendCount)+'.png')		
-		legend_im = Image.open('print_temp/legends/'+str(legendCount)+'.png')
-		# legend_im.thumbnail((100,100), Image.ANTIALIAS)
+		legend_im = PIL.Image.open('print_temp/legends/'+str(legendCount)+'.png')
+		# legend_im.thumbnail((100,100), PIL.Image.ANTIALIAS)
 		legends_palette.paste(legend_im, (0,legend_y))
 		legendCount = legendCount+1
 		lgd_w,lgd_h=legend_im.size
 		legend_y = legend_y+lgd_h
 	#6. resize map
-	new_im.thumbnail((1100,700), Image.ANTIALIAS)
+	new_im.thumbnail((1100,700), PIL.Image.ANTIALIAS)
 	#7. save completed map on to white background
 	img_w,img_h=new_im.size
 	bg_w,bg_h=background.size
@@ -100,17 +101,18 @@ try:
 	background.paste(new_im,offset)
 	background.paste(legends_palette,(img_w+30,(bg_h-img_h)/2))
 	#3. Add title, date printed to background
-	draw = ImageDraw.Draw(background)
+	draw = PIL.ImageDraw.Draw(background)
 	draw.text((20,(bg_h-img_h)/2-25), "U.S Forest Change Assessment Viewer", fill="black", font=fontBold)
 	draw.text((20,(bg_h-(bg_h-img_h)/2)), "Printed on: "+time.strftime("%m/%d/%Y"), fill="black", font=font)	
 	fo.write("got here\n")	
-	background.save("printed_map.jpg")	
+	background.save("print_temp/printed_map.jpg")	
 	# new_im.save("printed_map.jpg")	
 	#8. Clean up after yourself:
-	dirPath = "print_temp"
+	#dirPath = "print_temp"
 	# fileList = os.listdir(dirPath)
 	# for fileName in fileList:
 		# os.remove(dirPath+"/"+fileName)	
+        print "Content-type: text/plain\n\n"
 except:
 	fo.write("error occured\n")
 	sys.exit(1)
