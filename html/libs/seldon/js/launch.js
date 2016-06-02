@@ -1,5 +1,7 @@
 module.exports = function ($) {
     var createSplashScreen = require("./splash.js")($);
+    var handle_search = require("./search.js")($);
+    var ga_events = require("./set_google_analytics_events.js");
 
     var areasList = [];
     var activeBtn = [];
@@ -17,6 +19,7 @@ module.exports = function ($) {
             dataType: "xml",
             success: function (configXML) {
                 $configXML = app.parseConfig(configXML, shareUrlInfo);
+                ga_events($);
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 alert(textStatus);
@@ -88,11 +91,11 @@ module.exports = function ($) {
             app.saveCurrentExtent();
             app.updateShareMapUrl();
             //jdm 4/28/15: removed this as it seem to be throwing things off
-			//when panning outside of current view extent.  Instead moved it to the bottom of 
-			//setTheme because that is where a change such as switching to the Alaska theme 
-			//can be caught.  However, in general it shouldn't be necessary to be updating the 
-			//maxExtent within the CONUS which will be the case 99% of the time
-			// app.map.setOptions({maxExtent: app.map.getExtent()});
+                        //when panning outside of current view extent.  Instead moved it to the bottom of
+                        //setTheme because that is where a change such as switching to the Alaska theme
+                        //can be caught.  However, in general it shouldn't be necessary to be updating the
+                        //maxExtent within the CONUS which will be the case 99% of the time
+                        // app.map.setOptions({maxExtent: app.map.getExtent()});
         });
 
         //
@@ -134,9 +137,9 @@ module.exports = function ($) {
         $('#themeCombo').change(function () {
             var i = parseInt($(this).val(), 10);
             app.setTheme(app.themes[i]);
-			//jdm (4/28/15) moved to here to account for possibility of 
-			//significant extent change with theme change
-			app.map.setOptions({maxExtent: app.map.getExtent()});			
+                        //jdm (4/28/15) moved to here to account for possibility of
+                        //significant extent change with theme change
+                        app.map.setOptions({maxExtent: app.map.getExtent()});
         });
         app.addListener("themechange", function () {
             $('#themeCombo').val(app.currentTheme.index);
@@ -256,6 +259,19 @@ module.exports = function ($) {
             }
         });
 
+        // Location based search
+        $("#address_lookup").on("click", function () {
+            var location = $("#address_field").val();
+            handle_search(location, app);
+        });
+
+        $("#address_field").on("keypress", function (e) {
+            if (e.which === 13) {
+                var location = $(this).val();
+                handle_search(location, app);
+            }
+        });
+
         //jdm: 7/9/12 - for global mask functionality
         $('.mask-toggle').on('click', function () {
             if ($(this).is(':checked')) {
@@ -264,6 +280,22 @@ module.exports = function ($) {
             } else {
                 app.setMaskByMask(false, this.value);
             }
+        });
+
+        $("[data-mask-grouper='true']").on("change", function () {
+            var disabled = $(this).is(':checked') ? true : false;
+            $("[data-mask-parent='" + this.value + "']").attr('disabled', disabled);
+        });
+
+        $('.mask-modifier').on('change', function () {
+            var value = $(this).is(':checked') ? this.value : "";
+            var index = $(this).data("index");
+
+            if ($(this).data("maskGrouper") === true) {
+                app.handleMaskModifierGroup(this.value, $(this).is(':checked'));
+            }
+
+            app.handleMaskModifier(value, index);
         });
 
         $('textarea').focus(function () {

@@ -11,19 +11,14 @@ module.exports = function ($) {
         var maskParentLayers = app.maskParentLayers;
         var maskParentLayer, maskLayer;
         var i;
+        var maskId = "#" + maskName.replace("MaskFor", "");
 
         if (toggle) {
-            // if ForestOnly grey out the sub-forest types
-            if (maskName === "MaskForForest") {
-                $("#ConiferForest").attr("disabled", true);
-                $("#DeciduousForest").attr("disabled", true);
-                $("#MixedForest").attr("disabled", true);
-            }
-
             var seldonLayer;
 
             var mask = new Mask(maskName);
             app.masks.push(mask);
+            var cleanMaskName = maskName.replace("/","");
 
             // Loop through app.map.layers making sure that
             // app.maskParentLayers is correct
@@ -38,20 +33,20 @@ module.exports = function ($) {
             for (i = 0; i < maskParentLayers.length; i++) {
                 maskParentLayer = maskParentLayers[i];
                 maskLayer = new Layer({
-                    lid         : maskParentLayer.lid + maskName.replace("/",""),
+                    lid         : maskParentLayer.lid + cleanMaskName,
                     visible     : "true",
                     url         : maskParentLayer.url,
                     srs         : maskParentLayer.srs,
-                    layers      : maskParentLayer.layers + maskName.replace("/",""),
+                    layers      : maskParentLayer.layers + cleanMaskName,
                     identify    : maskParentLayer.identify,
-                    name        : maskParentLayer.lid + maskName.replace("/",""),
+                    name        : maskParentLayer.lid + cleanMaskName,
                     mask        : "false",
                     legend      : maskParentLayer.legend,
                     index       : maskParentLayer.index,
                     parentLayer : maskParentLayer
                 });
                 maskLayer.activate();
-		maskLayer.setTransparency(maskParentLayer.transparency);
+                maskLayer.setTransparency(maskParentLayer.transparency);
                 mask.maskLayers.push(maskLayer);
                 if (maskParentLayer.visible === "true") {
                     maskParentLayer.deactivate();
@@ -63,12 +58,6 @@ module.exports = function ($) {
             }
         } //end if (toggle)
         else { //we have just turned off a mask
-            //if ForestOnly grey out the sub-forest types
-            if (maskName === "MaskForForest") {
-                $("#ConiferForest").attr("disabled", false);
-                $("#DeciduousForest").attr("disabled", false);
-                $("#MixedForest").attr("disabled", false);
-            }
             // Loop through app.masks and find maskName
             // When you find it, deactivate all of its maskLayers
             // Keep track of the number of mask in app.masks

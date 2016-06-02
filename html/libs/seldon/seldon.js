@@ -131,6 +131,7 @@ module.exports = function ($) {
         this.themes                = []; // list of Theme instances holding info about themes from config file
         this.maskParentLayers      = []; // list of currently active global mask parent layers
         this.masks                 = [];
+        this.maskModifiers         = [];
         this.defaultMasks          = ["MaskForForest"];
         this.radioButtonList       = [];
         this.radioButtonLayers     = [];
@@ -168,6 +169,8 @@ module.exports = function ($) {
         this.addMaskToLegend          = require("./add_mask_legend.js")($); 
         this.setMaskByMask            = require("./set_mask_by_mask.js")($);
         this.setMaskByLayer           = require("./set_mask_by_layer.js")($);
+        this.handleMaskModifier       = require("./mask_modifier.js"); 
+        this.handleMaskModifierGroup  = require("./mask_modifier_group.js")($); 
         this.parseConfig              = require("./parse_config.js")($);
         this.initOpenLayers           = require("./init_openlayers.js");
         this.removeMaskFromLegend     = function (layer) {};
@@ -181,7 +184,7 @@ module.exports = function ($) {
     return App;
 }
 
-},{"./accordion_clear.js":1,"./accordion_group_set.js":3,"./accordion_section_add.js":5,"./accordion_sublist_add.js":6,"./accordion_sublist_item_add.js":7,"./add_mask_legend.js":8,"./count.js":13,"./extent_print.js":16,"./extent_save.js":17,"./extent_zoom.js":18,"./extent_zoom_next.js":19,"./extent_zoom_previous.js":20,"./init_openlayers.js":24,"./launch.js":25,"./parse_config.js":36,"./set_base_layer.js":40,"./set_mask_by_layer.js":41,"./set_mask_by_mask.js":42,"./set_theme.js":43,"./share_url.js":45,"./update_share_url.js":49}],10:[function(require,module,exports){
+},{"./accordion_clear.js":1,"./accordion_group_set.js":3,"./accordion_section_add.js":5,"./accordion_sublist_add.js":6,"./accordion_sublist_item_add.js":7,"./add_mask_legend.js":8,"./count.js":13,"./extent_print.js":16,"./extent_save.js":17,"./extent_zoom.js":18,"./extent_zoom_next.js":19,"./extent_zoom_previous.js":20,"./init_openlayers.js":24,"./launch.js":25,"./mask_modifier.js":34,"./mask_modifier_group.js":35,"./parse_config.js":38,"./set_base_layer.js":43,"./set_mask_by_layer.js":45,"./set_mask_by_mask.js":46,"./set_theme.js":47,"./share_url.js":49,"./update_share_url.js":53}],10:[function(require,module,exports){
 function arrayContainsElement (array, element) {
     var i;
     if (array === undefined) {
@@ -492,13 +495,19 @@ module.exports = function ($, app) {
 
                 $.each(app.map.layers, function () {
                     var name, label;
-                    if (!this.isBaseLayer && this.params) {
+                    if (!this.isBaseLayer && this.params && (!("seldonLayer" in this) || (String(this.seldonLayer.identify) !== "false"))) {
                         name  = this.params.LAYERS;
-                        label = (String(name).indexOf("MaskFor") !== -1) ? name.substring(0, name.indexOf("MaskFor")) : name;
+
+                        // Added by mbp Mon Aug 24 15:54:58 2015 to adjust for ArcGIS server WMS differences:
+                        if (String(name).match(/^\d+$/)) {
+                            label = this.name;
+                        } else {
+                            label = (String(name).indexOf("MaskFor") !== -1) ? name.substring(0, name.indexOf("MaskFor")) : name;
+                        }
 
                         if (layersAdded.indexOf(label) !== -1) return;
 
-                        layersAdded.push(label)
+                        layersAdded.push(label);
                         services.push({
                             url   : this.url,
                             srs   : this.projection.projCode,
@@ -520,6 +529,9 @@ module.exports = function ($, app) {
                     }
                 });
                 html = html + "</table>";
+
+                // If there are no services to query, stop now, before the popup is shown
+                if (services.length === 0) { return; }
 
                 var popup = $(document.createElement('div'));
                 popup.attr("id", "identify_popup");
@@ -551,9 +563,8 @@ module.exports = function ($, app) {
         var requestUrl = createWMSGetFeatureInfoRequestURL(service.url, service.name, service.srs, e.xy.x, e.xy.y);
 
         if (seldon.useProxyScript === "True") {
-            requestUrl = $(location).attr('href') + "/cgi-bin/proxy.cgi?url=" + encodeURIComponent(requestUrl);
+            requestUrl = $(location).attr('href') + "proxy?url=" + encodeURIComponent(requestUrl);
         }
-
         $.ajax({
             url: requestUrl,
             dataType: "text",
@@ -562,6 +573,7 @@ module.exports = function ($, app) {
                 var $group = $("#" + service.label + "-label");
                 var newTableContents = '';
                 var i;
+                var layerIDCount = 0;
 
                 $group.find("img").remove();
 
@@ -588,7 +600,7 @@ module.exports = function ($, app) {
                 if (!newTableContents) $group.find(".layer-results").text("N/A");
             },
             error: function(jqXHR, textStatus, errorThrown) {
-                alert(textStatus);
+                //alert(textStatus);
             }
         });
     }
@@ -672,6 +684,10 @@ module.exports = function ($, app) {
                     (children[i].nodeName === "value_0")) {
                     value = value + sprintf(" (%.2f %%)", parseFloat(value,10) * 200.0 / 255.0 - 100);
                 }
+				if ((stringStartsWith(layerName.toUpperCase(), "NDMI-ARCHIVE") || stringStartsWith(layerName.toUpperCase(), "NDVI-ARCHIVE") || stringStartsWith(layerName.toUpperCase(), "SWIR-ARCHIVE") || stringStartsWith(layerName.toUpperCase(), "SOUTHEAST-NDVI-CURRENT") || stringStartsWith(layerName.toUpperCase(), "SOUTHEAST-NDMI-CURRENT") || stringStartsWith(layerName.toUpperCase(), "SOUTHEAST-SWIR-CURRENT")) &&
+                    (children[i].nodeName === "value_0")) {
+                    value = sprintf("%.0f %%", parseFloat(value,10) - 128);
+                }
                 returnVals[i] = [children[i].nodeName, value];
             }
         }
@@ -686,7 +702,7 @@ module.exports = function ($, app) {
     return createIdentifyTool;
 }
 
-},{"./clicktool.js":12,"./stringContainsChar.js":47}],23:[function(require,module,exports){
+},{"./clicktool.js":12,"./stringContainsChar.js":51}],23:[function(require,module,exports){
 module.exports = function (app) {
     var ShareUrlInfo = require('./share.js');
 
@@ -703,7 +719,7 @@ module.exports = function (app) {
     return init;
 }
 
-},{"./share.js":44}],24:[function(require,module,exports){
+},{"./share.js":48}],24:[function(require,module,exports){
 function initOpenLayers (baseLayerInfo, baseLayer, theme, themeOptions, initialExtent) {
     var app = this;
 
@@ -794,6 +810,8 @@ module.exports = initOpenLayers;
 },{}],25:[function(require,module,exports){
 module.exports = function ($) {
     var createSplashScreen = require("./splash.js")($);
+    var handle_search = require("./search.js")($);
+    var ga_events = require("./set_google_analytics_events.js");
 
     var areasList = [];
     var activeBtn = [];
@@ -811,6 +829,7 @@ module.exports = function ($) {
             dataType: "xml",
             success: function (configXML) {
                 $configXML = app.parseConfig(configXML, shareUrlInfo);
+                ga_events($);
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 alert(textStatus);
@@ -882,11 +901,11 @@ module.exports = function ($) {
             app.saveCurrentExtent();
             app.updateShareMapUrl();
             //jdm 4/28/15: removed this as it seem to be throwing things off
-			//when panning outside of current view extent.  Instead moved it to the bottom of 
-			//setTheme because that is where a change such as switching to the Alaska theme 
-			//can be caught.  However, in general it shouldn't be necessary to be updating the 
-			//maxExtent within the CONUS which will be the case 99% of the time
-			// app.map.setOptions({maxExtent: app.map.getExtent()});
+                        //when panning outside of current view extent.  Instead moved it to the bottom of
+                        //setTheme because that is where a change such as switching to the Alaska theme
+                        //can be caught.  However, in general it shouldn't be necessary to be updating the
+                        //maxExtent within the CONUS which will be the case 99% of the time
+                        // app.map.setOptions({maxExtent: app.map.getExtent()});
         });
 
         //
@@ -928,9 +947,9 @@ module.exports = function ($) {
         $('#themeCombo').change(function () {
             var i = parseInt($(this).val(), 10);
             app.setTheme(app.themes[i]);
-			//jdm (4/28/15) moved to here to account for possibility of 
-			//significant extent change with theme change
-			app.map.setOptions({maxExtent: app.map.getExtent()});			
+                        //jdm (4/28/15) moved to here to account for possibility of
+                        //significant extent change with theme change
+                        app.map.setOptions({maxExtent: app.map.getExtent()});
         });
         app.addListener("themechange", function () {
             $('#themeCombo').val(app.currentTheme.index);
@@ -1050,6 +1069,19 @@ module.exports = function ($) {
             }
         });
 
+        // Location based search
+        $("#address_lookup").on("click", function () {
+            var location = $("#address_field").val();
+            handle_search(location, app);
+        });
+
+        $("#address_field").on("keypress", function (e) {
+            if (e.which === 13) {
+                var location = $(this).val();
+                handle_search(location, app);
+            }
+        });
+
         //jdm: 7/9/12 - for global mask functionality
         $('.mask-toggle').on('click', function () {
             if ($(this).is(':checked')) {
@@ -1058,6 +1090,22 @@ module.exports = function ($) {
             } else {
                 app.setMaskByMask(false, this.value);
             }
+        });
+
+        $("[data-mask-grouper='true']").on("change", function () {
+            var disabled = $(this).is(':checked') ? true : false;
+            $("[data-mask-parent='" + this.value + "']").attr('disabled', disabled);
+        });
+
+        $('.mask-modifier').on('change', function () {
+            var value = $(this).is(':checked') ? this.value : "";
+            var index = $(this).data("index");
+
+            if ($(this).data("maskGrouper") === true) {
+                app.handleMaskModifierGroup(this.value, $(this).is(':checked'));
+            }
+
+            app.handleMaskModifier(value, index);
         });
 
         $('textarea').focus(function () {
@@ -1108,7 +1156,7 @@ module.exports = function ($) {
     return launch;
 }
 
-},{"./deactivate_controls.js":15,"./print.js":37,"./splash.js":46}],26:[function(require,module,exports){
+},{"./deactivate_controls.js":15,"./print.js":39,"./search.js":41,"./set_google_analytics_events.js":44,"./splash.js":50}],26:[function(require,module,exports){
 module.exports = function ($, app) {
     var stringContainsChar = require('./stringContainsChar.js');
 
@@ -1150,13 +1198,15 @@ module.exports = function ($, app) {
                     options
                 );
             } else {
+                var layer = this.layers + (("mask" in this) ? app.maskModifiers.join("") : "");
+
                 this.openLayersLayer = new OpenLayers.Layer.WMS(
                     this.name,
                     this.url,
                     {
                         projection  : new OpenLayers.Projection(seldon.projection),
                         units       : "m",
-                        layers      : this.layers,
+                        layers      : layer,
                         maxExtent   : new OpenLayers.Bounds(app.maxExtent),
                         transparent : true
                     },
@@ -1311,7 +1361,7 @@ module.exports = function ($, app) {
     return Layer;
 }
 
-},{"./stringContainsChar.js":47}],27:[function(require,module,exports){
+},{"./stringContainsChar.js":51}],27:[function(require,module,exports){
 module.exports = function ($) {
     function createLayerToggleCheckbox (layer) {
         // create the checkbox
@@ -1604,6 +1654,66 @@ function Mask (maskName) {
 module.exports = Mask;
 
 },{}],34:[function(require,module,exports){
+function handleMaskModifier(name, index) {
+    var app = this;
+    var seldonLayer;
+    var i;
+
+    app.maskModifiers[index] = name;
+
+    for (i = 0; i < app.map.layers.length; i++) {
+        seldonLayer = app.map.layers[i].seldonLayer;
+        if (seldonLayer && ("mask" in seldonLayer)) {
+            seldonLayer.openLayersLayer.params.LAYERS = seldonLayer.layers + app.maskModifiers.join('');
+            seldonLayer.openLayersLayer.redraw(true);
+        }
+    }
+
+    for (i = 0; i < app.maskParentLayers.length; i++) {
+        seldonLayer = app.maskParentLayers[i];
+        if (seldonLayer && ("mask" in seldonLayer)) {
+            seldonLayer.openLayersLayer.params.LAYERS = seldonLayer.layers + app.maskModifiers.join('');
+            seldonLayer.openLayersLayer.redraw(true);
+        }
+    }
+}
+
+module.exports = handleMaskModifier;
+
+},{}],35:[function(require,module,exports){
+module.exports = function ($) {
+    /**
+     * When a mask grouper is enabled this function removes any modifiers from
+     * its children. When a mask grouper is disabled the function re-enables any
+     * modifiers that were disabled.
+     */
+    function handleMaskModifierGroup(parent, disabled) {
+        var app = this;
+        var children = $("[data-mask-parent='" + parent + "']");
+        var child;
+        var name;
+        var index;
+        var i;
+
+        for (i = 0; i < children.length; i++) {
+            child = children[i];
+            if (disabled === true) {
+                name = "";
+            } else if ($(child).is(':checked')) {
+                name = child.value;
+            } else {
+                name = "";
+            }
+            index = $(child).data("index");
+            app.maskModifiers[index] = name;
+        }
+    }
+
+    return handleMaskModifierGroup;
+}
+
+
+},{}],36:[function(require,module,exports){
 module.exports = function ($, app) {
     var ClickTool = require('./clicktool.js');
 
@@ -1691,7 +1801,7 @@ module.exports = function ($, app) {
     return createMultigraphTool;
 }
 
-},{"./clicktool.js":12}],35:[function(require,module,exports){
+},{"./clicktool.js":12}],37:[function(require,module,exports){
 module.exports = function ($) {
     //jdm: override of js remove function
     //This is very useful for removing items from array by value
@@ -1746,7 +1856,7 @@ module.exports = function ($) {
     }));
 }
 
-},{}],36:[function(require,module,exports){
+},{}],38:[function(require,module,exports){
 module.exports = function ($) {
     var createArcGIS93RestParams = require("./create_arcgis_rest_params.js")($);
     var AccordionGroup           = require("./accordion_group.js");
@@ -1980,7 +2090,7 @@ module.exports = function ($) {
     return parseConfig;
 }
 
-},{"./accordion_group.js":2,"./accordion_group_sublist.js":4,"./baselayer.js":11,"./create_arcgis_rest_params.js":14,"./identify.js":22,"./layer.js":26,"./multigraph.js":34,"./theme.js":48}],37:[function(require,module,exports){
+},{"./accordion_group.js":2,"./accordion_group_sublist.js":4,"./baselayer.js":11,"./create_arcgis_rest_params.js":14,"./identify.js":22,"./layer.js":26,"./multigraph.js":36,"./theme.js":52}],39:[function(require,module,exports){
 module.exports = function ($, app) {
     function printMap ($configXML) {
         // go through all layers, and collect a list of objects
@@ -2018,11 +2128,15 @@ module.exports = function ($, app) {
             }
         }
 
-        //the legend url's to pass along
+        //the legend url to pass along
         var layerLegendsURLs = [];
         $('#legend').find('div').each(function () {
-            var innerDivImgSrc = $(this).children('img').attr('src');
-            layerLegendsURLs.push({ url: innerDivImgSrc });
+            var url = $(this).children('img').attr('src');
+            if (!url.match(/^http/)) {
+                // it's a relative URL, so make it absolute
+                url = window.location.href.replace(/\/[^\/]*$/, "/") + url;
+            }
+            layerLegendsURLs.push({ url: url });
         });
 
         // hand off the list to our server-side script, which will do the heavy lifting
@@ -2085,7 +2199,7 @@ module.exports = function ($, app) {
     return printMap;
 };
 
-},{}],38:[function(require,module,exports){
+},{}],40:[function(require,module,exports){
 function RepeatingOperation (op, yieldEveryIteration) {
     var count = 0;
     var instance = this;
@@ -2101,7 +2215,35 @@ function RepeatingOperation (op, yieldEveryIteration) {
 
 module.exports = RepeatingOperation;
 
-},{}],39:[function(require,module,exports){
+},{}],41:[function(require,module,exports){
+/**
+ * search.js includes contributions by William Clark (wclark1@unca.edu)
+ *
+ * This function takes a user specified location, transforms it to the appropriate extent
+ * coordinates and zooms the map to that location.
+ */
+module.exports = function ($) {
+    function handle_search (location, app) {
+        var rest_endpoint = "https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/find?text=" + location + "&f=json";
+
+        $.getJSON(rest_endpoint, function (data) {
+            var locations = data["locations"][0];
+            if (locations === undefined) {
+                return;
+            }
+
+            var extent = locations["extent"];
+            var bounds = new OpenLayers.Bounds(extent.xmin, extent.ymin, extent.xmax, extent.ymax).transform(
+                new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913")
+            );
+            app.zoomToExtent(bounds, true);
+        });
+    }
+
+    return handle_search;
+}
+
+},{}],42:[function(require,module,exports){
 (function ($) {
     "use strict";
 
@@ -2116,7 +2258,7 @@ module.exports = RepeatingOperation;
     window.seldon = seldon;
 }(jQuery));
 
-},{"./app.js":9,"./init.js":23,"./overrides.js":35}],40:[function(require,module,exports){
+},{"./app.js":9,"./init.js":23,"./overrides.js":37}],43:[function(require,module,exports){
 module.exports = function ($) {
     function setBaseLayer (baseLayer) {
         var app = this;
@@ -2152,7 +2294,243 @@ module.exports = function ($) {
 }
 
 
-},{}],41:[function(require,module,exports){
+},{}],44:[function(require,module,exports){
+function ga_events ($) {
+
+
+  var eventAdded = false;
+  //check if trackevent is installed
+  try {
+    $.ga.trackEvent
+    eventAdded = true;
+  }
+  catch(err) {
+      eventAdded = false;
+  }
+
+  //check if google analytics installed only set listners if
+  //installed otherwise do nothing
+  if (typeof ga !== 'undefined') {
+    //check if event traking plugin is refrenced
+    if (eventAdded){
+
+      //track map extent change
+      //  records the new map extent
+      seldon.app.map.events.register("moveend", seldon.app.map, function () {
+
+          var newMapExtent = seldon.app.map.getExtent();
+          //alert(ext);
+          $.ga.trackEvent({
+            category : 'Map Extent',
+            action : 'Change',
+            label : newMapExtent.toString(),
+            nonInteractive: true
+          });
+      });
+
+      //track click in sharemap url
+      //  records the text of the textarea
+      $( ".shareMapUrl" ).click(function(event) {
+        $.ga.trackEvent({
+          category : 'Share Map URL',
+          action : 'Click',
+          label : $('.shareMapUrl').val()
+        });
+      });
+
+      //track change in base map
+      //  records the text of the option
+      $( "#mapTheme  #themeCombo" ).change(function(event) {
+        $.ga.trackEvent({
+          category : 'Map Theme',
+          action : 'Change',
+          label : $('#mapTheme  #themeCombo option:selected').text()
+        });
+      });
+
+      //track find area search when user click enter this forces serach
+      //  records the text the input
+      $( "#txtFindArea input#address_field" ).keyup(function(event) {
+        if (event.which === 13){
+          $.ga.trackEvent({
+            category : 'Find Area',
+            action : 'Search Enter',
+            label : $(this).val()
+          });
+        }
+      });
+
+      //track find area search when user click the serarch button
+      //  this also forces serach
+      //  records the text the input
+      $( "#txtFindArea  #address_lookup img" ).click(function(event) {
+        $.ga.trackEvent({
+          category : 'Find Area',
+          action : 'Search Button',
+          label : $( "#txtFindArea input#address_field" ).val()
+        });
+      });
+
+      //track change in base map
+      //  records the text of the option
+      $( "#mapBase  #baseCombo" ).change(function(event) {
+        $.ga.trackEvent({
+          category : 'Base Map',
+          action : 'Change',
+          label : $('#mapBase  #baseCombo option:selected').text()
+        });
+      });
+
+      //track nav bar clicks (zoom,pan,identify,toogles)
+      //  records the tittle attribute as the label
+      $('.header-bar .header-bar img.icon').gaTrackEvent({
+        category: 'Nav Bar',
+        action: 'click',
+        useLabel: true,
+        labelAttribute: "title",
+        useEvent: true,
+        event: 'click'
+      });
+
+      //track base layer toggles when check box clicked
+      // records the for attribute as the label
+      $("#mapToolsDialog label[for^='chk']").gaTrackEvent({
+        category: 'Map Tools',
+        action: 'Toogle',
+        useLabel: true,
+        labelAttribute: "for",
+        useEvent: true,
+        event: 'click'
+      });
+
+      //track base layer toggles when the label for the check box is clickded
+      //  records the id attribute as the label
+      $("#mapToolsDialog input").gaTrackEvent({
+        category: 'Map Tools',
+        action: 'Toogle',
+        useLabel: true,
+        labelAttribute: "id",
+        useEvent: true,
+        event: 'click'
+      });
+
+      //track Layer Picker toggles when check box clicked
+      // records the for attribute as the label
+      $("#layerPickerDialog label[for^='chk']").gaTrackEvent({
+        category: 'Base Layer',
+        action: 'Toogle',
+        useLabel: true,
+        labelAttribute: "for",
+        useEvent: true,
+        event: 'click'
+      });
+
+      //track Layer Picker toggles when the label for the check box is clickded
+      //  records the id attribute as the label
+      $("#layerPickerDialog input").gaTrackEvent({
+        category: 'Base Layer',
+        action: 'Toogle',
+        useLabel: true,
+        labelAttribute: "id",
+        useEvent: true,
+        event: 'click'
+      });
+
+      //track accordion header expand and un-expand
+      //  records the text of the header (h3)
+      $("h3.ui-accordion-header").gaTrackEvent({
+        category: 'Base Layer',
+        action: 'Toggle Accordion',
+        useLabel: true,
+        label: function(){return $(this).text();},
+        useEvent: true,
+        event: 'click'
+      });
+
+      //track open layers pan zoom tool slide zoom
+      // records text for action
+      $( "img[src$='slider.png']" ).mouseup(function(event) {
+            $.ga.trackEvent({
+              category : 'OpenLayers Buttons',
+              action : 'Slide',
+              label : 'Zoom Slider'
+            });
+      })
+
+      //track open layers pan zoom tool
+      // records text for action
+      $( ".olButton" ).click(function(event) {
+
+        var eleId = $(this).attr('id');
+        switch (true) {
+          //zoom bar.  zoom to zoo level
+          case (eleId.indexOf("ZoombarOpenLayers_Map") > -1):
+            $.ga.trackEvent({
+              category : 'OpenLayers Buttons',
+              action : 'Click',
+              label : 'Zoom Bar'
+            });
+          break;
+          //pan left
+          case (eleId.indexOf("panleft") > -1):
+            $.ga.trackEvent({
+              category : 'OpenLayers Buttons',
+              action : 'Click',
+              label : 'Pan Left'
+            });
+          break;
+          //pan right
+          case (eleId.indexOf("panright") > -1):
+            $.ga.trackEvent({
+              category : 'OpenLayers Buttons',
+              action : 'Click',
+              label : 'Pan right'
+            });
+          break;
+          //pan up
+          case (eleId.indexOf("panup") > -1):
+            $.ga.trackEvent({
+              category : 'OpenLayers Buttons',
+              action : 'Click',
+              label : 'Pan up'
+            });
+          break;
+          //pan down
+          case (eleId.indexOf("pandown") > -1):
+            $.ga.trackEvent({
+              category : 'OpenLayers Buttons',
+              action : 'Click',
+              label : 'Pan down'
+            });
+          break;
+          //zoom in
+          case (eleId.indexOf("zoomin") > -1):
+            $.ga.trackEvent({
+              category : 'OpenLayers Buttons',
+              action : 'Click',
+              label : 'Zoom in'
+            });
+          break;
+          //zoom out
+          case (eleId.indexOf("zoomout") > -1):
+            $.ga.trackEvent({
+              category : 'OpenLayers Buttons',
+              action : 'Click',
+              label : 'Zoom Out'
+            });
+          break;
+
+          default:
+        }
+      })
+
+    }//check event tracking exits
+  }//check google analytics exits
+}
+
+module.exports = ga_events;
+
+},{}],45:[function(require,module,exports){
 module.exports = function ($) {
     function setMaskByLayer (toggle, parentLayer) {
         var Layer = require("./layer.js")($, this);
@@ -2224,7 +2602,7 @@ module.exports = function ($) {
     return setMaskByLayer;
 }
 
-},{"./layer.js":26}],42:[function(require,module,exports){
+},{"./layer.js":26}],46:[function(require,module,exports){
 module.exports = function ($) {
     var Mask = require("./mask.js");
 
@@ -2238,19 +2616,14 @@ module.exports = function ($) {
         var maskParentLayers = app.maskParentLayers;
         var maskParentLayer, maskLayer;
         var i;
+        var maskId = "#" + maskName.replace("MaskFor", "");
 
         if (toggle) {
-            // if ForestOnly grey out the sub-forest types
-            if (maskName === "MaskForForest") {
-                $("#ConiferForest").attr("disabled", true);
-                $("#DeciduousForest").attr("disabled", true);
-                $("#MixedForest").attr("disabled", true);
-            }
-
             var seldonLayer;
 
             var mask = new Mask(maskName);
             app.masks.push(mask);
+            var cleanMaskName = maskName.replace("/","");
 
             // Loop through app.map.layers making sure that
             // app.maskParentLayers is correct
@@ -2265,20 +2638,20 @@ module.exports = function ($) {
             for (i = 0; i < maskParentLayers.length; i++) {
                 maskParentLayer = maskParentLayers[i];
                 maskLayer = new Layer({
-                    lid         : maskParentLayer.lid + maskName.replace("/",""),
+                    lid         : maskParentLayer.lid + cleanMaskName,
                     visible     : "true",
                     url         : maskParentLayer.url,
                     srs         : maskParentLayer.srs,
-                    layers      : maskParentLayer.layers + maskName.replace("/",""),
+                    layers      : maskParentLayer.layers + cleanMaskName,
                     identify    : maskParentLayer.identify,
-                    name        : maskParentLayer.lid + maskName.replace("/",""),
+                    name        : maskParentLayer.lid + cleanMaskName,
                     mask        : "false",
                     legend      : maskParentLayer.legend,
                     index       : maskParentLayer.index,
                     parentLayer : maskParentLayer
                 });
                 maskLayer.activate();
-		maskLayer.setTransparency(maskParentLayer.transparency);
+                maskLayer.setTransparency(maskParentLayer.transparency);
                 mask.maskLayers.push(maskLayer);
                 if (maskParentLayer.visible === "true") {
                     maskParentLayer.deactivate();
@@ -2290,12 +2663,6 @@ module.exports = function ($) {
             }
         } //end if (toggle)
         else { //we have just turned off a mask
-            //if ForestOnly grey out the sub-forest types
-            if (maskName === "MaskForForest") {
-                $("#ConiferForest").attr("disabled", false);
-                $("#DeciduousForest").attr("disabled", false);
-                $("#MixedForest").attr("disabled", false);
-            }
             // Loop through app.masks and find maskName
             // When you find it, deactivate all of its maskLayers
             // Keep track of the number of mask in app.masks
@@ -2332,7 +2699,7 @@ module.exports = function ($) {
     return setMaskByMask;
 }
 
-},{"./layer.js":26,"./mask.js":33}],43:[function(require,module,exports){
+},{"./layer.js":26,"./mask.js":33}],47:[function(require,module,exports){
 module.exports = function ($) {
     var RepeatingOperation = require("./repeating_operation.js");
     var ShareUrlInfo = require("./share.js");
@@ -2346,7 +2713,14 @@ module.exports = function ($) {
 
         var app = this,
             $layerPickerAccordion = $("#layerPickerAccordion"),
-            flag;
+            flag,
+            accordionGroup,
+            labelElem,
+            brElem,
+            textElem,
+            maskLabelElem,
+            maskTextElem,
+            activeMaskLayers = [];
 
         //jdm 1/3/14: set the default forest mask
         //TODO: There should be a more eloquent way to handle default mask
@@ -2371,7 +2745,7 @@ module.exports = function ($) {
             var lids = shareUrlInfo.layerLids;
             //loop through the accordion groups the active one accordingly
             for (var a = 0, b = this.accordionGroups.length; a < b; a++) {
-                if (this.accordionGroups[a].gid == gid) {
+                if (this.accordionGroups[a].gid==gid) {
                     options.accordionGroup = this.accordionGroups[a];
                 }
             }
@@ -2410,7 +2784,7 @@ module.exports = function ($) {
                 app.setAccordionGroup(theme.accordionGroups[accordionGroupIndex]);
             }
         });
-        if ( !$layerPickerAccordion.data('listAccordion') ) {
+        if ( ! $layerPickerAccordion.data('listAccordion') ) {
             $layerPickerAccordion.data('listAccordion', {
                 accordionOptions     : options,
                 sections             : []
@@ -2418,28 +2792,9 @@ module.exports = function ($) {
             $layerPickerAccordion.accordion('option', 'active');
         }
 
-        var defaultAccordionGroup = setThemeLayers(app, theme, options, $layerPickerAccordion, lids);
-
-        $layerPickerAccordion.accordion("refresh");
-        // if page doesn't have layerPickerAccordion, insert it
-        if (flag === true) {
-            $("#layerPickerDialog").append($layerPickerAccordion);
-        }
-
-        return defaultAccordionGroup;
-    };
-
-    function setThemeLayers (app, theme, options, $layerPickerAccordion, lids) {
         //jdm: re-wrote loop using traditional for loops (more vintage-IE friendly)
         //vintage-IE does work with jquery each loops, but seems to be slower
         // for (var a = 0, b = theme.accordionGroups.length; a < b; a++) {
-        var accordionGroup,
-            labelElem,
-            brElem,
-            textElem,
-            maskLabelElem,
-            maskTextElem;
-        
         var a = 0;
         var defaultAccordionGroup = undefined;
         var ro1 = new RepeatingOperation(function () {
@@ -2494,73 +2849,63 @@ module.exports = function ($) {
                     //jdm 5/28/13: if there is a mask for this layer then we will provide a status
                     //as to when that mask is active
                     var $testForMask = layer.mask;
-                    var controlGroup;
+                    var radioButton;
+                    var dropdownBox;
                     if ($testForMask) {
                         maskLabelElem = document.createElement("label");
                         maskTextElem = document.createTextNode(""); //empty until active, if active then put (m)
                         maskLabelElem.setAttribute("id", "mask-status" + layer.lid);
                         maskLabelElem.appendChild(maskTextElem);
-                        controlGroup = [
-                            createLayerToggleCheckbox(layer),
-                            labelElem,
-                            createLayerPropertiesIcon(layer),
-                            maskLabelElem,
-                            brElem
-                        ];
+                        sublistLayerItems.push([createLayerToggleCheckbox(layer),
+                                                labelElem,
+                                                createLayerPropertiesIcon(layer),
+                                                maskLabelElem,brElem]);
                     } else { //no mask for this layer (most will be of this type outside of FCAV)
                         // add the layer to the accordion group
-                        if (sublist.type === "radiobutton") { //radio button type
-                            var radioButton = createLayerToggleRadioButton(layer, sublist.label.replace(/\s+/g, ''));
+                        if (sublist.type=="radiobutton") { //radio button type
+                            sublistLayerItems.push([radioButton=createLayerToggleRadioButton(layer, sublist.label.replace(/\s+/g, '')),
+                                                    labelElem,
+                                                    createLayerPropertiesIcon(layer),brElem]);
                             app.radioButtonList.push(radioButton);
                             app.radioButtonLayers.push(layer);
-                            controlGroup = [
-                                radioButton,
-                                labelElem,
-                                createLayerPropertiesIcon(layer),
-                                brElem
-                            ];
-                        } else if (sublist.type === "dropdownbox") { //dropdownbox type
-                            selectBoxLayers.push(layer);
-                            app.dropdownBoxLayers.push(layer);
-
+                        } else if (sublist.type=="dropdownbox") { //dropdownbox type
                             // Using sublist.layers.length build up array of layer information to pass to 
                             // the dropdownbox such that only one call to createLayerToggleDropdownBox.
                             // Assumption #1: A dropdownbox is always preceded in the config file by a 
                             // radiobutton and therefore the dropdownbox needs to know about its corresponding radiobutton group
-                            if ((selectBoxLayers.length + 1) >= sublist.layers.length) {
-                                var dropdownBox = createLayerToggleDropdownBox(layer, selectBoxLayers, sublist.label.replace(/\s+/g, ''));
+                            if (((selectBoxLayers.length+1)<sublist.layers.length) || (selectBoxLayers.length == undefined)){
+                                selectBoxLayers.push(layer);
+                                app.dropdownBoxLayers.push(layer);
+                            } else {
+                                selectBoxLayers.push(layer);
+                                sublistLayerItems.push([dropdownBox=createLayerToggleDropdownBox(layer, selectBoxLayers, sublist.label.replace(/\s+/g, ''))]);
                                 app.dropdownBoxList.push(dropdownBox);
-                                controlGroup = [dropdownBox];
+                                app.dropdownBoxLayers.push(layer);
                             }
                         } else { // assume checkbox type
-                            controlGroup = [
-                                createLayerToggleCheckbox(layer),
-                                labelElem,
-                                createLayerPropertiesIcon(layer),
-                                brElem
-                            ];
+                            sublistLayerItems.push([createLayerToggleCheckbox(layer),
+                                                    labelElem,
+                                                    createLayerPropertiesIcon(layer),brElem]);
                         }
                     }
-                    sublistLayerItems.push(controlGroup);
 
                     // Decide whether to activate the layer.  If we received a layer list in the
                     // options arg, active the layer only if it appears in that list.  If we
                     // received no layer list in the options arg, activate the layer if the layer's
                     // "selected" attribute was true in the config file.
-                    if ((options.layers !== undefined && arrayContainsElement(options.layers, layer)) ||
-                        (options.layers === undefined && layer.selectedInConfig) &&
-                        sublist.type != "radiobutton") {
+                    if (((options.layers !== undefined) &&
+                         (arrayContainsElement(options.layers, layer))) ||
+                        ((options.layers === undefined) &&
+                         layer.selectedInConfig) && (sublist.type!="radiobutton")) {
                         //console.log("activate at line 449");
                         layer.activate();
                     }
                     //we shouldn't have to re-activate an active layer on theme change
                     //But, rather just verify that it is checked as such
                     if (lids !== undefined) {
-                        var $chkBox, m;
-                        for (m = 0; m < lids.length; m++) {
-                            $chkBox = $("#chk"+lids[m]);
-                            if ($chkBox[0] !== undefined) {
-                                $chkBox[0].checked = true;
+                        for (var m = 0; m < lids.length; m++) {
+                            if ($("#chk"+lids[m])[0] !== undefined) {
+                                $("#chk"+lids[m])[0].checked = true;
                             }
                         }
                     }
@@ -2583,8 +2928,16 @@ module.exports = function ($) {
         ro1.step();
         // } //end loop for theme.accordionGroups
 
+        $layerPickerAccordion.accordion("refresh");
+        // if page doesn't have layerPickerAccordion, insert it
+        if (flag === true) {
+            $("#layerPickerDialog").append($layerPickerAccordion);
+        }
+
         return defaultAccordionGroup;
-    }
+
+    };
+
 
     function setThemeContinue (app, theme, options, accordionGroup) {
         app.currentTheme = theme;
@@ -2630,7 +2983,7 @@ module.exports = function ($) {
     return setTheme;
 }
 
-},{"./array_contains_element.js":10,"./layer_checkbox.js":27,"./layer_icon.js":29,"./layer_radio.js":30,"./layer_select.js":32,"./repeating_operation.js":38,"./share.js":44}],44:[function(require,module,exports){
+},{"./array_contains_element.js":10,"./layer_checkbox.js":27,"./layer_icon.js":29,"./layer_radio.js":30,"./layer_select.js":32,"./repeating_operation.js":40,"./share.js":48}],48:[function(require,module,exports){
 function ShareUrlInfo (settings) {
     if (settings === undefined) settings = {};
 
@@ -2727,7 +3080,7 @@ ShareUrlInfo.prototype.urlArgs = function () {
 
 module.exports = ShareUrlInfo;
 
-},{}],45:[function(require,module,exports){
+},{}],49:[function(require,module,exports){
 module.exports = function ($) {
     var stringContainsChar = require("./stringContainsChar.js");
     var ShareUrlInfo = require("./share.js");
@@ -2797,7 +3150,7 @@ module.exports = function ($) {
     return shareUrl;
 }
 
-},{"./share.js":44,"./stringContainsChar.js":47}],46:[function(require,module,exports){
+},{"./share.js":48,"./stringContainsChar.js":51}],50:[function(require,module,exports){
 module.exports = function ($) {
     function createSplashScreen () {
         var $document    = $(document),
@@ -2817,14 +3170,14 @@ module.exports = function ($) {
     return createSplashScreen;
 }
 
-},{}],47:[function(require,module,exports){
+},{}],51:[function(require,module,exports){
 function stringContainsChar (string, c) {
     return (string.indexOf(c) >= 0);
 }
 
 module.exports = stringContainsChar;
 
-},{}],48:[function(require,module,exports){
+},{}],52:[function(require,module,exports){
 function Theme (settings) {
     this.accordionGroups = [];
     if (!settings) { return; }
@@ -2851,7 +3204,7 @@ function Theme (settings) {
 
 module.exports = Theme;
 
-},{}],49:[function(require,module,exports){
+},{}],53:[function(require,module,exports){
 module.exports = function ($) {
     function updateShareMapUrl () {
         if (this.currentTheme) {
@@ -2865,4 +3218,4 @@ module.exports = function ($) {
     return updateShareMapUrl;
 }
 
-},{}]},{},[39]);
+},{}]},{},[42]);
