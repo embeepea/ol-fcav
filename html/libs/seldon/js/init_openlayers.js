@@ -11,19 +11,19 @@ function initOpenLayers (baseLayerInfo, baseLayer, theme, themeOptions, initialE
 
     var maxExtentBounds;
     if (theme.xmax && theme.xmin && theme.ymax && theme.ymin) {
-	maxExtentBounds = new OpenLayers.Bounds(
-	    theme.xmin,
-	    theme.ymin,
-	    theme.xmax,
-	    theme.ymax
-	);
+    maxExtentBounds = new OpenLayers.Bounds(
+        theme.xmin,
+        theme.ymin,
+        theme.xmax,
+        theme.ymax
+    );
     } else {
-	maxExtentBounds = new OpenLayers.Bounds(
+    maxExtentBounds = new OpenLayers.Bounds(
             app.maxExtent.left,
             app.maxExtent.bottom,
             app.maxExtent.right,
             app.maxExtent.top
-	);
+    );
     }
 
     if (initialExtent === undefined) {
@@ -45,16 +45,13 @@ function initOpenLayers (baseLayerInfo, baseLayer, theme, themeOptions, initialE
         tileSize:          layer.tileSize,
         tileManager:       app.tileManager,
         controls: [
-            new OpenLayers.Control.Navigation({
-                dragPanOptions: {
-                    enableKinetic: true
-                }
-            }),
+            new OpenLayers.Control.Navigation(),
             new OpenLayers.Control.Attribution(),
             app.zoomInTool,
             app.zoomOutTool,
             app.identifyTool,
-            app.multigraphTool
+            app.multigraphTool,
+            app.markerTool
         ],
         eventListeners:
         {
