@@ -194,13 +194,42 @@ Footer Styles
 Map Layers & Map Tools Styles
 */
 
-.ui-accordion-content h4.collapsible:not(.empty) {
-    cursor: pointer;
-    margin: 0px;
+.tooltip-dialog {
+    min-width: 380px !important;
+    min-height: 250px !important;
 }
 
-.ui-accordion-content h4.collapsible.empty {
-    margin: 1.1em 0 .4em 0;
+.tooltip-content {
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.tooltip-content a:link {
+    text-decoration: underline;
+    color: blue;
+}
+
+.accordion-more-info-button {
+    padding: 0px 2px 0px 2px;
+    margin-left: 5px;
+    border: 0;
+    background: #fff;
+    background: transparent;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.sublist.collapsible .sublist-header {
+    cursor: pointer;
+}
+
+.sublist-header h4 {
+    display: inline-block;
+}
+
+.sublist.collapsible h4 {
+    margin-top: 0px;
+    margin-bottom: 2px;
 }
 
 .layer-group {
@@ -209,7 +238,7 @@ Map Layers & Map Tools Styles
     transition: height .3s;
 }
 
-.layer-group.collapsible {
+.sublist.collapsible .layer-group {
     padding-left: 15px;
 }
 
@@ -218,10 +247,9 @@ Map Layers & Map Tools Styles
     overflow: hidden;
 }
 
-.ui-accordion-content h4 span.ui-icon {
+.ui-accordion-header-icon.ui-icon {
     display: inline-block;
     padding-right: 2px;
-    padding-top: 1px;
 }
 
 .layer {
