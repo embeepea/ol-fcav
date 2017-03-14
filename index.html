@@ -31,13 +31,18 @@
     <script type="text/javascript" src="libs/seldon/libs/jquery-building-blocks-googleanalytics/building-blocks-googleanalytics.js"></script>
     <script type="text/javascript" src="libs/seldon/seldon.js"></script>
 
+    <script type="text/javascript" src="config/legend_lookup.js"></script>
+
     <link rel="stylesheet" type="text/css" href="libs/seldon/seldon.css" />
     <link rel="stylesheet" type="text/css" href="fcav.css" />
 
     <script type="text/javascript">
       $('document').ready(function() {
-          //seldon.init("http://fswms-dev.nemac.org/view/config/ews_config.xml","EPSG:900913"); //for dev
-          seldon.init("https://wms.forwarn.forestthreats.org/view/config/ews_config.xml","EPSG:900913");
+          seldon.init("http://fswms-dev.nemac.org/view/config/ews_config.xml",
+            "EPSG:900913",
+            legend_lookup
+          ); //for dev
+          //seldon.init("https://wms.forwarn.forestthreats.org/view/config/ews_config.xml","EPSG:900913");
       });
     </script>
 
