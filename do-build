@@ -6,7 +6,7 @@ cgi-bin \
 libs \
 icons \
 *.css \
-config/legend_lookup.js
+legend_lookup.js
 "
 
 rsync --delete --exclude '**/.git*' --delete-excluded -av ${THINGS_TO_COPY} html/
