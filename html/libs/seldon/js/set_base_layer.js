@@ -10,7 +10,8 @@ module.exports = function ($) {
                 dataType: "jsonp",
                 success:  function (layerInfo) {
                     var layer = new OpenLayers.Layer.ArcGISCache("AGSCache", baseLayer.url, {
-                        layerInfo: layerInfo
+                        layerInfo: layerInfo,
+                        numZoomLevels: baseLayer.numZoomLevels
                     });
                     handleBaseLayer(app, layer, baseLayer);
                 },

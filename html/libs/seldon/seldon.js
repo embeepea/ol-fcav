@@ -274,6 +274,7 @@ function BaseLayer (settings) {
     this.label = settings.label;
     this.url   = settings.url;
     this.index = settings.index;
+    this.numZoomLevels = settings.numZoomLevels;
 }
 
 module.exports = BaseLayer;
@@ -803,7 +804,8 @@ function initOpenLayers (baseLayerInfo, baseLayer, theme, themeOptions, initialE
         var layer = new OpenLayers.Layer.Google("Google Streets", {numZoomLevels: 20});
     } else { //assume arcgis
         var layer = new OpenLayers.Layer.ArcGISCache("AGSCache", baseLayer.url, {
-            layerInfo: baseLayerInfo
+            layerInfo: baseLayerInfo,
+            numZoomLevels: baseLayer.numZoomLevels
         });
     }
 
@@ -2679,7 +2681,8 @@ module.exports = function ($) {
                 dataType: "jsonp",
                 success:  function (layerInfo) {
                     var layer = new OpenLayers.Layer.ArcGISCache("AGSCache", baseLayer.url, {
-                        layerInfo: layerInfo
+                        layerInfo: layerInfo,
+                        numZoomLevels: baseLayer.numZoomLevels
                     });
                     handleBaseLayer(app, layer, baseLayer);
                 },
