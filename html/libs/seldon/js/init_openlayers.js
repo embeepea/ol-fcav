@@ -5,7 +5,8 @@ function initOpenLayers (baseLayerInfo, baseLayer, theme, themeOptions, initialE
         var layer = new OpenLayers.Layer.Google("Google Streets", {numZoomLevels: 20});
     } else { //assume arcgis
         var layer = new OpenLayers.Layer.ArcGISCache("AGSCache", baseLayer.url, {
-            layerInfo: baseLayerInfo
+            layerInfo: baseLayerInfo,
+            numZoomLevels: baseLayer.numZoomLevels
         });
     }
 

@@ -4,6 +4,7 @@ function BaseLayer (settings) {
     this.label = settings.label;
     this.url   = settings.url;
     this.index = settings.index;
+    this.numZoomLevels = settings.numZoomLevels;
 }
 
 module.exports = BaseLayer;
