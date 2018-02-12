@@ -51,6 +51,7 @@ module.exports = function ($) {
                 name     : $image.attr('name'),
                 label    : $image.attr('label'),
                 url      : $image.attr('url'),
+                numZoomLevels : Number($image.attr('numZoomLevels')) || 20,
                 index    : i
             });
             app.baseLayers.push(baseLayer);
