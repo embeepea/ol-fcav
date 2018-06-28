@@ -9,16 +9,17 @@ module.exports = function ($) {
             if ($(this).is(':checked')) {
                 layer.activate();
             } else {
-                layer.deactivate({ removeFromLegend: true });
+                layer.deactivate({ removeFromLegend: true, removeFromParentMaskLayers: true });
             }
         };
         $checkbox = $(checkbox);
+        $checkbox.addClass(layer.lid)
         // listen for activate/deactivate events from the layer, and update the checkbox accordingly
         layer.addListener("activate", function () {
-            $checkbox.attr('checked', true);
+            $('input.'+this.lid).attr('checked', true);
         });
         layer.addListener("deactivate", function () {
-            $checkbox.attr('checked', false);
+            $('input.'+this.lid).attr('checked', false);
         });
         // return the new checkbox DOM element
         return checkbox;

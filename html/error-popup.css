@@ -1,6 +1,6 @@
 #data-interruption-error {
     position: absolute;
-    top: 23%;
+    top: 10%;
     left: 50%;
     width: 550px;
     margin-left: -275px;
@@ -8,14 +8,13 @@
     color: #b94a48;
     background-color: #f2dede;
     border-color: #ebccd1;
-    padding-top: 15px;
     border: 1px solid #b94a48;
     box-sizing: border-box;
 }
 
 .error-title {
     font-size: 18px;
-    margin-bottom: 10px;
+    margin-top: 10px;
     padding: 0 15px;
 }
 

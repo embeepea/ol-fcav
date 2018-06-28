@@ -10,8 +10,7 @@ module.exports = function ($) {
                 dataType: "jsonp",
                 success:  function (layerInfo) {
                     var layer = new OpenLayers.Layer.ArcGISCache("AGSCache", baseLayer.url, {
-                        layerInfo: layerInfo,
-                        numZoomLevels: baseLayer.numZoomLevels
+                        layerInfo: layerInfo
                     });
                     handleBaseLayer(app, layer, baseLayer);
                 },
@@ -23,13 +22,6 @@ module.exports = function ($) {
     }
 
     function handleBaseLayer (app, layer, baseLayer) {
-        var mapZoom = app.map.getZoom()
-        // Account for "0" zoom level by subtracting 1
-        var maxZoomForBaseLayer = baseLayer.numZoomLevels - 1
-        if (mapZoom > maxZoomForBaseLayer) {
-            var mapCenter = app.map.getCenter()
-            app.map.setCenter(mapCenter, maxZoomForBaseLayer)
-        }
         app.map.removeLayer(app.map.layers[0]);
         app.currentBaseLayer = baseLayer;
         app.map.addLayers([layer]);
