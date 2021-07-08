@@ -1,0 +1,6 @@
+#!/bin/bash
+
+cd libs/seldon
+./do-build
+cd ../..
+./do-build
